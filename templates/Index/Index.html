@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Financial News, Government Job, Stock Market  {% endblock title %}
+{% block homeactive %} active {% endblock homeactive %}
+{% block body %}
+
+<hr class="my-1">
+
+
+<div class="left col-md-6">
+        <h5>Trending News</h5>
+        {% for IndexNewsPost in allIndexNewsPost %}
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-3 shadow-sm h-md-250 position-relative">
+            <img src='https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{IndexNewsPost.image}}'
+             class="mr-1 ml-1 my-2 img-fluid" alt="image" style="height:75px;">
+
+            <div class="col p-3 d-flex flex-column position-static">
+                <h5 class="mb-0"> Title : <a class="text-dark" href="/{{IndexNewsPost.slug}}" target="_blank"> {{IndexNewsPost.title}} </a></h5>
+                <div class="mb-1 text-muted"> <small> Time Update : {{IndexNewsPost.timeStamp}} | 
+                    <strong class="d-inline-block mb-1 text-primary"> Source : {{IndexNewsPost.author}} </strong> </small>
+                </div>
+                <p class="card-text mb-auto"> {{IndexNewsPost.content|truncatechars:50|safe }} 
+                <a href="/{{IndexNewsPost.slug}}" target="_blank">Continue reading</a> </p>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+
+
+<hr class="bg-dark">
+
+{% endblock body %}
