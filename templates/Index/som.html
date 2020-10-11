@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Stock of the Month {% endblock title %}
+{% block body %}
+
+    {% for StockOfTheMonth in allStockOfTheMonth %}
+    <div class="container my-4 col-md-8 shadow p-3 my-4 mb-4 bg-white">
+        <h2 class="news-post-title"> Stock of the Month : {{StockOfTheMonth.title}} </h2>
+        <p class="news-post-meta mb-1">Posted at : {{StockOfTheMonth.timeStamp}} | <strong
+            class="d-inline-block mb-1 text-primary"> Sector: {{StockOfTheMonth.sector}} </strong> |
+            <div class="fb-like" data-href="http://127.0.0.1:8000/news/{{StockOfTheMonth}}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+        <p class="my-2"> {{StockOfTheMonth.content|safe}} </p>
+        <hr>
+        <p> <a href="/"> <button type="button" class="btn btn-sm btn-outline-dark"> <i class="fa fa-arrow-left"></i> Back to Home</button> </a> </p>
+        <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{StockOfTheMonth}}" data-numposts="5" data-width=""></div>
+    </div>
+    {% endfor %}
+
+{% endblock body %}

@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     
     #My Apps 
     'Index.apps.IndexConfig',
+    'Stock.apps.StockConfig',
+    'Gjob.apps.GjobConfig',
+    'FinanceNews.apps.FinancenewsConfig',
+
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Previous Trade Results {% endblock title %}
+{% comment %} {% block gjobactive %} active {% endblock gjobactive %} {% endcomment %}
+
+{% block body %}
+<div>
+
+<div class="box1 col-md-10 my-4 p-4 mx-auto">
+
+                <h4>Previous Positional / Swing Trade Results </h4>
+
+                <table class="table table-bordered my-2 shadow p-3 my-4 mb-4 bg-white">
+                    <thead style="text-align: center;" >
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    {% for PreviousSwingTrade in allPreviousSwingTrade %}
+                    <tbody style="text-align: center;" >
+                        <tr>
+                            <td> {{PreviousSwingTrade.date}} </th>
+                            <td> {{PreviousSwingTrade.stockname}} </td>
+                            <td> {{PreviousSwingTrade.priceandaction}} </td>
+                            <td> {{PreviousSwingTrade.time}} </td>
+                            <td> {{PreviousSwingTrade.status}} </td>
+
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+        <p class="m" > <a href="/stock/market"> <button type="button" class="btn btn-outline-primary"> <i class="fa fa-arrow-left"></i> Check More Swing Trade</button> </a> </p>
+
+</div>
+
+{% endblock body %}
+

@@ -36,17 +36,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title> {% block title %}  {% endblock title %} </title>
+    <title> {% block title %} {% endblock title %} </title>
     <link rel="shortcut icon" href="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/title-logo.png" type="image/x-icon">
-
 
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="dTxMU5xk"></script>
 
 </head>
 
 <body class="justify-content-center mx-auto">
-    <nav class="navbar navbar-expand-lg p-4 navbar-light bg-white" > <!-- style="background-color: #00347C;" -->
-        <a class="navbar-brand mx-2" href="/" style="color:blue;" > Economic Info </a>
+  
+  <div class="check" >
+    <nav class="navbar navbar-expand-lg p-2 navbar-dark" style="background-color: #00347C;">
+         <a class="navbar-brand mx-2" href="/" style="color:white;" > <h3> Economic Info</h3> </a>
+        <button class="navbar-toggler btn btn-sm btn-outline-dark ml-1 my-2 mr-2 my-sm-0"  type="submit" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" > <i class="fa fa-search"></i> Search </button>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -82,11 +84,11 @@
             <form method="get" action="/search" class="form-inline my-0 my-lg-0">
                 <input class="form-control mr-sm-2" style="height: 33px; width: 250px;" type="search" placeholder="Search Finance News"
                  aria-label="Search" name="query"id="query">    
-                <button class="btn btn-sm btn-outline-primary ml-1 my-2 mr-2 my-sm-0"  type="submit"> <i class="fa fa-search"></i> Search </button>
+                <button class="btn btn-sm btn-outline-light ml-1 my-2 mr-2 my-sm-0"  type="submit"> <i class="fa fa-search"></i> Search </button>
             </form>
         </div>
     </nav> 
-
+  </div>
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
         <strong>Notifications : </strong> {{ message }}
@@ -97,7 +99,6 @@
     {% endfor %}
         
     {% block body %}
-
     {% endblock body %}
     <hr class="bg-dark mb-0">
     <footer class="footer-fluid  my-0 py-3 text-light" style="background-color: #00347C; ;">
@@ -123,3 +124,4 @@
 </body>
 
 </html>
+

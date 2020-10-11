@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %} Search Results {% endblock title %}
+{% block body %}
+
+<div class="frame mx-auto" style="width: 85%; justify-content: center;">    
+    <div class="mid-frame my-4 mx-5 " style="justify-content: center;">
+        <div class="postcont">
+            <H2>Search Results : </H2>
+            {% if allFinanceNewsPost|length < 1 %}
+            <p> Sorry, No search Reults Found. </p>
+    
+            Your Search query - <b>{{query}}</b> - did not match any financial news updated on this website. <br>
+            <br>
+            Suggestions : 
+            <ul>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try different keywords.</li>
+            <li>Try more general keywords.</li>
+            <li>Try fewer keywords.</li>
+            </ul>
+    
+            {% endif %}
+    
+            {% for FinanceNewsPost in allFinanceNewsPost %}
+            <div 
+                class="row no-gutters border rounded overflow-hidden flex-md-row mb-3 shadow-sm h-md-250     position-relative">
+                <div class="col p-3 d-flex flex-column position-static">
+                    <h5 class="mb-0"> <a class="text-dark" href="/news/{{FinanceNewsPost.slug}}" target="_blank"> {{FinanceNewsPost.title}} </a></h5>
+                    <div class="mb-1 text-muted">{{FinanceNewsPost.timeStamp}}  | 
+                        <strong class="d-inline-block mb-1 text-primary">Source : {{FinanceNewsPost.author}}</strong>
+                    </div>
+    
+                </div>
+                <div class="col-auto my-4 d-none d-lg-block"> <img src="/media/{{FinanceNewsPost.image}}" class="mr-3" alt="image1">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <p class="mx-5" > <a href="/"> <button type="button" class="btn btn-sm btn-outline-dark"> <i class="fa fa-arrow-left"></i> Back to Home</button> </a> </p>
+
+    <div class="p-4 mx-5 ">
+        <h4>Important Links</h4>
+        <ol class="list-unstyled mb-0">
+            <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
+            <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
+            <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
+        </ol>
+    </div>
+    
+    <div class="p-4 mx-5">
+        <h4>Follow Us</h4>
+        <ol class="list-unstyled">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Telegram</a></li>
+        </ol>
+    </div>
+
+</div>
+
+{% endblock body %}

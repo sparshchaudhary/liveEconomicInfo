@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Stock Details {% endblock title %}
+{% block body %}
+
+    <div class="container col-md-8 my-4 shadow p-3 my-4 mb-4 bg-white">
+        <h2 class="news-post-title"> Swing Trade Stock Name - {{swingtradepost.stockname}} </h2>
+        <p class="news-post-meta mb-1">Posted at : {{swingtradepost.timeStamp}} ||  
+        <strong class="d-inline-block mb-1 text-primary"> Sector: {{swingtradepost.sector}} </strong> </p>
+        <p> <strong> Price & Action : {{swingtradepost.priceandaction}}  </strong> </p>
+        <p> {{swingtradepost.content|safe}} </p>
+        <hr>
+        <p> <a href="/stock/market"> <button type="button" class="btn btn-sm btn-outline-primary"> <i class="fa fa-arrow-left"></i> Check more Swing Trade</button> </a> </p>
+
+        <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{swingtradepost}}" data-numposts="5" data-width=""></div>
+
+    </div>
+
+{% endblock body %}

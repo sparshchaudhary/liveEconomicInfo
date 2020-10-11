@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block title %} Stock Market , Share Bazaar, Nifty 50 Updates , Sensex {% endblock title %}
+{% block stockactive %} active {% endblock stockactive %}
+{% block body %}
+
+<div class="Main d-flex flex-row flex-wrap my-4">
+
+    <div class="main2 col-md-9 mx-auto mb-4">
+
+        <div class="search-section d-flex flex-wrap flex-row mb-2 border rounded p-2">
+            <h3 class="col-md-7"> Stock Market Analysis</h3>
+            <form method="get" action="/stock/ssearch" target="_blank" class="form-inline my-2 my-lg-0 col-md-4">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Stock Name" aria-label="Search" name="squery" id="squery">
+                <button class="btn btn-outline-primary my-2 my-sm-0" style="width: 30%;" type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="stock d-flex flex-row flex-wrap mx-auto mb-4 ">
+
+            <div class="box1 col-md-8 p-4 mb-4 mx-auto border rounded">
+
+                <h4>Active Positional / Swing Trade </h4>
+                <table class="table table-bordered shadow p-3 my-4 mb-4 bg-white">
+                    <thead style="text-align: center;" >
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    {% for SwingTradePost in allSwingTradePost %}
+                    <tbody style="text-align: center;" >
+                        <tr>
+                            <td> {{SwingTradePost.date}} </th>
+                            <td> {{SwingTradePost.stockname}} </td>
+                            <td> {{SwingTradePost.priceandaction}} <br>
+                                <a href="/stock/{{SwingTradePost.slug}}">Know More</a></td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+                <hr>
+
+                <p> <a href="/stock/lasttrade"> <button type="button" class="btn btn-outline-success">  <strong> Previous Trade Call Results </strong> <i class="fa fa-arrow-circle-right"></i>
+                </button> </a> </p>
+
+            </div>
+
+            <div class="box1 col-md-4 mx-auto">
+                {% for StockCard in allStockCard %}
+                <div class="1 my-2">
+                    <button class="btn btn-primary w-100 p-2" type="button" data-toggle="collapse"
+                        data-target="#{{StockCard.id}}" aria-expanded="false" aria-controls="collapseExample"
+                        style="background-color: #2C61B1;"> {{StockCard.cardheading}}
+                    </button>
+
+                    <div class="collapse my-3" id="{{StockCard.id}}">
+                        <div class="card card-body">
+                            <ol>
+                                <li> <strong> {{StockCard.stockname1}} </strong> 
+                                    <!-- <a href="#"> <small> <sub> Know more </sub> </small> </a>   -->
+                                </li>
+                                <li> <strong> {{StockCard.stockname2}} </strong></li>
+                                <li> <strong> {{StockCard.stockname3}} </strong></li>
+                                <li> <strong> {{StockCard.stockname4}} </strong></li>
+                                <li> <strong> {{StockCard.stockname5}} </strong></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <aside class="col-md-3 ">
+
+        <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="Calls">Long Term Bets <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                </svg> </h4>
+
+            <div class="1 my-2">
+                <button class="btn btn-primary w-100 p-2" type="button" data-toggle="collapse" data-target="#colsexampl"aria-expanded="false" aria-controls="collapseExample" 
+                    style="background-color: #2C61B1;">
+                    Check Stock List
+                </button>
+
+                <div class="collapse my-3" id="colsexampl">
+                    <table class="table table-bordered text-center"  >
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        {% for LongTermBet in allLongTermBet %}
+                        <tbody>
+                            <tr>
+                                <td> {{LongTermBet.date}} </td>
+                                <td> {{LongTermBet.stockname}} </td>
+                                <td> {{LongTermBet.intrinscivalue}} </td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4">
+            <h4 class="font-italic">Important Links</h4>
+            <ol class="list-unstyled mb-0">
+                <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
+                <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
+                <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>   
+            </ol>
+        </div>
+
+        <div class="p-4">
+            <h4 class="font-italic">Follow Us</h4>
+            <ol class="list-unstyled">
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Telegram</a></li>
+            </ol>
+        </div>
+
+    </aside>
+
+</div>
+
+{% endblock body %}

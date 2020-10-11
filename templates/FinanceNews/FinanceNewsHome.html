@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block title %} Financial News, Economics, Global News {% endblock title %}
+{% block financenewsactive %} active {% endblock financenewsactive %}
+{% block body %}
+
+{% for HeaderNewsPics in allHeaderNewsPics %}
+<div class="slideshow">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src='/media/{{HeaderNewsPics.HeaderNewsImage1}}' 
+                class="d-block w-80 img-fluid " alt="News Header image">
+            </div>
+            <div class="carousel-item">
+                <img src='/media/{{HeaderNewsPics.HeaderNewsImage2}}' 
+                class="d-block w-80 img-fluid" alt="News Header image">
+            </div>
+            <div class="carousel-item">
+                <img src='/media/{{HeaderNewsPics.HeaderNewsImage3}}' 
+                class="d-block w-80  img-fluid" alt="News Header image">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+{% endfor %} 
+
+<div class="mid-frame d-flex flex-row flex-wrap my-4" >
+    <div class="postcont col-md-8">
+        {% for FinanceNewsPost in allFinanceNewsPost %}
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-3 shadow-sm h-md-250     position-relative">
+            <div class="col p-3 d-flex flex-column position-static">
+                <h5 class="mb-0"> <a class="text-dark" href="/news/{{FinanceNewsPost.slug}}" target="_blank">
+                    {{FinanceNewsPost.title}} </a></h5>
+                <div class="mb-1 text-muted"> <small> {{FinanceNewsPost.timeStamp}} |
+                    <strong class="d-inline-block mb-1 text-primary">Source : {{FinanceNewsPost.author}}</strong> | ({{FinanceNewsPost.views}} views) </small>
+                </div>
+                <p class="card-text mb-auto"> {{ FinanceNewsPost.content|truncatechars:100|safe }}
+                    <a href="/news/{{FinanceNewsPost.slug}}" target="_blank"> Continue reading</a>
+                </p>
+            </div>
+            <div class="col-auto my-4 mr-2 d-none d-lg-block">
+                <img src='https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{FinanceNewsPost.image}}'class="mr-3 img-fluid" alt="imagetest">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <aside class="sidebar col-md-4">
+
+        {% for SideNewsPics in allSideNewsPics %}
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active"> <img src='/media/{{SideNewsPics.SideNewsImage1}}' class="d-block w-80 img-fluid" alt="News image">
+                </div>
+                <div class="carousel-item"> <img src='/media/{{SideNewsPics.SideNewsImage2}}' class="d-block w-80  img-fluid" alt="News image">
+                </div>
+                <div class="carousel-item"> <img src='/media/{{SideNewsPics.SideNewsImage3}}' class="d-block w-80  img-fluid" alt="News image">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        {% endfor %}
+        
+        <div class="p-4">
+            <h4 class="font-italic">Important Links</h4>
+            <ol class="list-unstyled mb-0">
+                <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
+                <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
+                <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
+            </ol>
+        </div>
+
+        <div class="p-4">
+            <h4 class="font-italic">Follow Us</h4>
+            <ol class="list-unstyled">
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Telegram</a></li>
+            </ol>
+        </div>
+
+    </aside>
+</div>
+
+{% endblock body %}
+
+

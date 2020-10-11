@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %} Government Jobs Updates 2020 {% endblock title %}
+{% block gjobactive %} active {% endblock gjobactive %}
+
+{% block body %}
+
+<div class="mid-frame d-flex flex-row flex-wrap my-4">
+    <div class="container col-md-9">
+        <div class="search-section d-flex flex-wrap flex-row mb-2 border rounded p-2">
+            <h3 class="col-md-7">Latest Government Vacancies</h3>
+            <form method="get" action="/job/gsearch" class="form-inline my-2 my-lg-0 col-md-4">
+                <input class="form-control mr-sm-2 col-md-8" type="search" placeholder="Search Category Name" name="gquery" id="gquery" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="width: 30%;" >Search</button>
+            </form>
+        </div>
+
+        {% for GovJobPost in allGovJobPost %}
+        <div
+            class="row no-gutters border rounded overflow-hidden flex-md-row mb-3 shadow-sm h-md-250     position-relative">
+            <div class="col p-3 d-flex flex-column position-static">
+                <h3 class="mb-0"> <a class="text-dark" href="/job/{{GovJobPost.slug}}" target="_blank"> {{GovJobPost.title}} </a> </h3>
+                <div class="mb-1 text-muted"> Posted on : {{GovJobPost.timeStamp}} || 
+                    <strong class="d-inline-block mb-1 text-primary"> Source : {{GovJobPost.author}} </strong> || <strong class="d-inline-block mb-1 text-dark"> Category : {{GovJobPost.category}} || Location : {{GovJobPost.location}} </strong>
+                </div>
+                <p class="mb-0"> {{ GovJobPost.content| truncatechars:50 | safe}}</p>
+                <strong> <a class="my-0" href="/job/{{GovJobPost.slug}}" target="_blank" style="color: red;" >Get More Datails & Apply Now</a></strong>
+            </div>
+            <div class="col-auto my-4 mr-2 d-none d-lg-block"> <img src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{GovJobPost.image}}"
+                class="mr-3" alt="imagetest">
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+
+    <aside class="col-md-3 blog-sidebar">
+
+        <div class="book border rounded p-2 mb-4">
+
+            <h4>    Exam Books </h4>
+            {% for BookPost in allBookPost %}
+            <div class="d-flex flex-row flex-wrap my-4 " >
+
+                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookOneUrl}}"></iframe>
+
+                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookTwoUrl}}"></iframe>
+
+            </div>
+
+            <div class="d-flex flex-row flex-wrap my-4 " >
+
+                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookThreeUrl}}"></iframe>
+
+                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookFourUrl}}"></iframe>
+
+            </div>
+
+            <div class="d-flex flex-row flex-wrap my-4 " >
+
+                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookFiveUrl}}"></iframe>
+
+                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookSixUrl}}"></iframe>
+
+            </div>
+
+            {% endfor %}
+        
+        </div>
+
+        <div class="p-4">
+            <h4 class="font-italic">Important Links</h4>
+            <ol class="list-unstyled mb-0">
+                <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
+                <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
+                <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
+            </ol>
+        </div>
+
+        <div class="p-4">
+            <h4 class="font-italic">Follow Us</h4>
+            <ol class="list-unstyled">
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Telegram</a></li>
+            </ol>
+        </div>
+
+    </aside>
+
+</div>
+
+{% endblock body %}

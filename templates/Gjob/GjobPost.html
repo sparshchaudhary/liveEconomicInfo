@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %} {{gjobpost.title}} {% endblock title %}
+{% block body %}
+
+
+<div class="main d-flex flex-row flex-wrap my-4 p-4">
+
+    <div class="container shadow p-3 mb-4 bg-white col-md-9">
+        <h2 class="news-post-title"> {{gjobpost.title}} </h2>
+        <p class="news-post-meta text-muted mb-0 ">Posted at : {{gjobpost.timeStamp}} || 
+            <strong class="d-inline-block mb-0 text-primary"> Source: {{gjobpost.author}} </strong>
+             || ( <span> {{gjobpost.views}} views </span> ) </p> 
+        <p> <strong> Category : {{gjobpost.category}} </strong>  || 
+            <strong> Location : {{gjobpost.location }} </strong> </p>
+
+        <div class="fb-like" data-href="http://127.0.0.1:8000/news/{{trendpost}}" data-width=""
+        data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+
+        <p> {{gjobpost.content|safe}} </p>
+        <hr>
+
+        <p> <a href="/job/latest"> <button type="button" class="btn btn-sm btn-outline-dark"> <i class="fa fa-arrow-left"></i>  Check more Government Vacancies </button> </a> </p>
+
+        <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{gjobpost}}" data-numposts="5" data-width=""></div>
+
+    </div>
+
+    <aside class="col-md-3 blog-sidebar">
+
+        <div class="book border rounded p-2 mb-4">
+
+            <h4>    Exam Books </h4>
+            {% for BookPost in allBookPost %}
+            <div class="d-flex flex-row flex-wrap my-4 " >
+
+                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookOneUrl}}"></iframe>
+
+                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookTwoUrl}}"></iframe>
+
+            </div>
+
+            <div class="d-flex flex-row flex-wrap my-4 " >
+
+                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookThreeUrl}}"></iframe>
+
+                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookFourUrl}}"></iframe>
+
+            </div>
+
+            <div class="d-flex flex-row flex-wrap my-4 " >
+
+                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookFiveUrl}}"></iframe>
+
+                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookSixUrl}}"></iframe>
+
+            </div>
+
+            {% endfor %}
+        
+        </div>
+
+        <div class="p-4">
+            <h4 class="font-italic">Important Links</h4>
+            <ol class="list-unstyled mb-0">
+                <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
+                <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
+                <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
+            </ol>
+        </div>
+
+        <div class="p-4">
+            <h3>Follow Us</h3>
+            <ol class="list-unstyled">
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Telegram</a></li>
+            </ol>
+        </div>
+
+    </aside>
+
+</div>
+
+{% endblock body %}
