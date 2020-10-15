@@ -1,34 +1,37 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=EB+Garamond" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    
+
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180248955-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'UA-180248955-1');
+        gtag('config', 'UA-180248955-1');
     </script>
 
     <!-- One Signal - Web push notification System -->
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="">
+    </script>
     <script>
         window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-        OneSignal.init({
-        appId: "c3887909-6e0a-41d8-808d-d8cb13f4471f",
-        notifyButton: {
-        enable: true,
-            },
-          });
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "c3887909-6e0a-41d8-808d-d8cb13f4471f",
+                notifyButton: {
+                    enable: true,
+                },
+            });
         });
     </script>
 
@@ -37,58 +40,122 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <title> {% block title %} {% endblock title %} </title>
-    <link rel="shortcut icon" href="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/title-logo.png" type="image/x-icon">
+    <link rel="shortcut icon"
+        href="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/title-logo.png"
+        type="image/x-icon">
 
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="dTxMU5xk"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0"
+        nonce="dTxMU5xk"></script>
 
 </head>
 
-<body class="justify-content-center mx-auto">
-  
-  <div class="check" >
-    <nav class="navbar navbar-expand-lg p-2 navbar-dark" style="background-color: #00347C;">
-         <a class="navbar-brand mx-2" href="/" style="color:white;" > <h3> Economic Info</h3> </a>
-        <button class="navbar-toggler btn btn-sm btn-outline-dark ml-1 my-2 mr-2 my-sm-0"  type="submit" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" > <i class="fa fa-search"></i> Search </button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body class="justify-content-center mx-auto " onload=display_ct();>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <nav class="navbar navbar-expand-lg navbar-dark p-0 ">
+        <div class="nn col-md-12 p-0">
+            <div class="navbar-top d-flex flex-wrap flex-row justify-content-between align-items-center">
 
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item {% block homeactive %} {% endblock homeactive %}">
-                    <a class="nav-link mx-1" href="/"> <i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
-                </li>
+                <div class="col-md-8" style=" justify-content: center;">
+                    <div class="d-flex " style="justify-content: center;">
+                        <a href="/"> <img src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/logoimg.PNG"
+                            alt="Logo" / style="width: 425px; height: 60px;" class="img-fluid"></a>
+                    </div>
+                    <div class="text-center mb-0 my-0">
+                        <small> <span id="ct"> </span> </small>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-4 d-flex flex-row flex-wrap ">
+                    <div style=" width: 100%;">
+                        <ul class="social-media d-flex mr-2 mb-0" style="list-style: none; float:right;">
+                            <strong> Follow us : </strong>
+                            <li>
+                                <a href="#" target="_blank" style="margin-left: 5px;">
+                                    <i class="fa fa-instagram fa-lg"></i> </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" style="margin-left: 5px;">
+                                    <i class="fa fa-facebook-official fa-lg"></i> </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" style="margin-left: 5px;">
+                                    <i class="fa fa-twitter-square fa-lg"></i> </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" style="margin-left: 5px;">
+                                    <i class="fa fa-google-plus-square fa-lg"></i></a>
+                            </li>
+                        </ul> 
+                    </div>
+                    
+                    <div style=" width: 100%;">
+                        <marquee class="my-0 mb-0" width="100%" direction="left" height="auto" scrollamount="10"> <a
+                                id="marquee1" href="#" target="_blank">
+                                <h5 style="color: red;">Subscribe to Our Website to get Latest Financial News ,
+                                    Government Job Updates & Stock Market Updates Daily.</h5>
+                            </a></marquee>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="navbar-bottom-menu navbar-dark my-2 p-1" style=" background-color: #2664C8;">
+                <button class="navbar-toggler ml-2" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <button class="navbar-toggler mr-2" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float: right; height: 38px; width: 60px;" >
+                    <i class="fa fa-search"></i>
+                </button>
                 
-                <li class="nav-item {% block financenewsactive %} {% endblock financenewsactive %}">
-                    <a class="nav-link mx-1" href="/news/finance" target="_blank"> <i class="fa fa-newspaper-o"></i> Finance News</a>
-                </li>
-                
-                <li class="nav-item {% block gjobactive %} {% endblock gjobactive %}">
-                    <a class="nav-link mx-1" href="/job/latest" target="_blank"> <i class="fa fa-briefcase"></i> Government Jobs</a>
-                </li>
-                
-                <li class="nav-item {% block stockactive %} {% endblock stockactive %}">
-                    <a class="nav-link mx-1" href="/stock/market" target="_blank"> <i class="fa fa-line-chart"></i> Stock Market</a>
-                </li>
-                
-                <li class="nav-item {% block aboutactive %} {% endblock aboutactive %}">
-                    <a class="nav-link mx-1" href="/about" target="_blank"> <i class="fa fa-user"></i> About Us</a>
-                </li>
-                
-                <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
-                    <a class="nav-link mx-1" href="/contact" target="_blank"> <i class="fa fa-address-book"></i> Contact Us</a>
-                </li>
-            </ul>
-            <form method="get" action="/search" class="form-inline my-0 my-lg-0">
-                <input class="form-control mr-sm-2" style="height: 33px; width: 250px;" type="search" placeholder="Search Finance News"
-                 aria-label="Search" name="query"id="query">    
-                <button class="btn btn-sm btn-outline-light ml-1 my-2 mr-2 my-sm-0"  type="submit"> <i class="fa fa-search"></i> Search </button>
-            </form>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav mr-auto pl-4" style="font-size: 16px;">
+                        <li class="nav-item {% block homeactive %} {% endblock homeactive %} ">
+                            <a class="nav-link mx-1" href="/"> <i class="fa fa-home"></i> Home <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item {% block financenewsactive %} {% endblock financenewsactive %}">
+                            <a class="nav-link mx-1" href="/news/finance" target="_blank">
+                                <i class="fa fa-newspaper-o"></i>
+                                Finance News</a>
+                        </li>
+
+                        <li class="nav-item {% block gjobactive %} {% endblock gjobactive %}">
+                            <a class="nav-link mx-1" href="/job/latest" target="_blank"> <i class="fa fa-briefcase"></i>
+                                Government Jobs</a>
+                        </li>
+
+                        <li class="nav-item {% block stockactive %} {% endblock stockactive %}">
+                            <a class="nav-link mx-1" href="/stock/market" target="_blank"> <i
+                                    class="fa fa-line-chart"></i>
+                                Stock Market</a>
+                        </li>
+
+                        <li class="nav-item {% block aboutactive %} {% endblock aboutactive %}">
+                            <a class="nav-link mx-1" href="/about" target="_blank"> <i class="fa fa-user"></i> About
+                                Us</a>
+                        </li>
+
+                        <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
+                            <a class="nav-link mx-1" href="/contact" target="_blank"> <i class="fa fa-address-book"></i>
+                                Contact Us</a>
+                        </li>
+                    </ul>
+                    <form method="get" action="/search" class="form-inline my-0 my-lg-0 pl-4">
+                        <input class="form-control mr-sm-2" style="height: 33px; width: 220px;" type="search"
+                            placeholder="Search Finance News" aria-label="Search" name="query" id="query">
+                        <button class="btn btn-sm btn-outline-light ml-1 my-2 mr-2 my-sm-0" type="submit"> <i
+                                class="fa fa-search"></i> Search </button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </nav> 
-  </div>
+
+    </nav>
+
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
         <strong>Notifications : </strong> {{ message }}
@@ -97,16 +164,17 @@
         </button>
     </div>
     {% endfor %}
-        
+
     {% block body %}
     {% endblock body %}
     <hr class="bg-dark mb-0">
-    <footer class="footer-fluid  my-0 py-3 text-light" style="background-color: #00347C; ;">
-        <p class="mb-0 text-center" style="color: white;">© 2020-2021 economicinfo.in</p>
+    <footer class="footer-fluid  my-0 py-3 text-light" style="background-color: #2D67E4; ;">
+        <p class="mb-0 text-center" style="color: white;">© 2020-2021 <a href="#" style="color: white;"> economicinfo.in
+            </a> </p>
         <p class="mb-0 text-center" style="color: white;">
             <a href="#" style="color: white;">Back to top |</a>
-            <a href="#" style="color: white;">Privacy |</a>
-            <a href="#" style="color: white;">Terms & Conditions</a>
+            <a href="/privacy-policy" target="_blank" style="color: white;">Privacy Policy |</a>
+            <a href="/terms-of-service" target="_blank" style="color: white;">Terms & Conditions</a>
         </p>
     </footer>
 
@@ -121,7 +189,26 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+
+    <script>
+        var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleString();
+    </script>
+
+    <script type="text/javascript">
+        function display_c() {
+            var refresh = 1000; // Refresh rate in milli seconds
+            mytime = setTimeout('display_ct()', refresh)
+        }
+
+        function display_ct() {
+            var x = new Date()
+            document.getElementById('ct').innerHTML = x;
+            display_c();
+        }
+    </script>
+
+
 </body>
 
 </html>
-

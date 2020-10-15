@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'ote^z9d!1p3w@e%e2%as4_a81rpz^263krffb9(vuw^tp52b-f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['localhost', '134.122.30.235', 'www.economicinfo.in', 'economicinfo.in']

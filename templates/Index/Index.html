@@ -1,21 +1,13 @@
 {% extends 'base.html' %}
-{% block title %} Financial News, Government Job, Stock Market
+{% block title %} Financial News | Government Job | Stock Market Latest News | Business News
 {% endblock title %}
 {% block homeactive %} active {% endblock homeactive %}
 {% block body %}
 
-<hr class="my-1">
+<div class="main-body-frame d-flex flex-row flex-wrap my-2 py-1  ">
 
-<marquee class="my-0" width="100%" direction="left" height="auto" scrollamount="10"> <a id="marquee1" href="#"target="_blank">
-        <h5 style="color: red;">Subscribe to Our Website to get Latest Government Job Updates, Financial News & Stock Market Updates Daily.</h5></a>
-</marquee>
-
-<hr class="my-0">
-
-<div class="main-body-frame d-flex flex-row flex-wrap my-2 py-1">
-
-    <div class="left col-md-6">
-        <h4>Latest Financial Trending News</h4>
+    <div class="left col-md-6 pl-4 ">
+        <h4>Latest Financial News</h4>
         <hr class="my-0 mb-2">
         {% for IndexNewsPost in allIndexNewsPost %}
         <div
@@ -24,33 +16,34 @@
                 class="mr-1 ml-1 my-2 img-fluid" alt="image" style="height:75px;">
 
             <div class="col p-3 d-flex flex-column position-static">
-                <h5 class="mb-0"> Title : <a class="text-dark" href="/{{IndexNewsPost.slug}}" target="_blank">
+                <h5 class="mb-0"> <a class="text-dark" href="/new/{{IndexNewsPost.slug}}" target="_blank">
                         {{IndexNewsPost.title}} </a></h5>
-                <div class="mb-1 text-muted"> <small> Time Update : {{IndexNewsPost.timeStamp}} |
+                <div class="mb-1 text-muted"> <small> {{IndexNewsPost.timeStamp}} |
                         <strong class="d-inline-block mb-1 text-primary"> Source : {{IndexNewsPost.author}} </strong>
                     </small>
                 </div>
                 <p class="card-text mb-auto"> {{IndexNewsPost.content|truncatechars:50|safe }}
-                    <a href="/{{IndexNewsPost.slug}}" target="_blank">Continue reading</a> </p>
+                    <a href="/new/{{IndexNewsPost.slug}}" target="_blank">Continue reading</a> </p>
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <div class="mid-section col-md-3">
+    <div class="mid-section col-md-3" style="border-left: 1px solid black;">
         <h4>Government Vacancies</h4>
         <hr class="my-0 mb-2">
         {% for JobPost in allIndexJobPost %}
         <div class="media">
-            <img src='https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{JobPost.image}}' class="mr-3 img-fluid" alt="image">
+            <img src='https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{JobPost.image}}'
+                class="mr-3 img-fluid" alt="image">
             <div class="media-body">
                 <a href="/govt/{{JobPost.testslug}}" target="_blank">
-                    <h5 class="mt-0 text-dark"> Job Ttile : {{JobPost.title}} <small><span
+                    <h5 class="mt-0 text-dark"> {{JobPost.title}} <small><span
                                 class="badge badge-pill badge-success">Latest</span></small>
                     </h5>
 
                 </a>
-                {% comment %} <p> Details : {{JobPost.content|truncatechars:50|safe }} {% endcomment %}
+                {% comment %} <p>{{JobPost.content|truncatechars:50|safe }} {% endcomment %}
                     <a href="/govt/{{JobPost.testslug}}" target="_blank"> Check Details & Apply</a></p>
                 {% comment %} #/test/testingslug.html {% endcomment %}
                 <hr>
@@ -59,20 +52,19 @@
         {% endfor %}
 
         <div class="book border rounded mx-auto p-2 mb-4" style="justify-content: center;">
-            <h6> Best Exam Book Recommendations </h6>
+            <h5> Best Exam Book Recommendations </h5>
 
             {% for BookStore in allBookStore %}
-            <div class="d-flex flex-row flex-wrap my-4 ">
+            <div class="d-flex flex-row flex-wrap my-4" style="justify-content: center;">
 
-                <iframe class="ml-2" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no"
-                    frameborder="0" src="{{BookStore.BookOneUrl}}"></iframe>
+                <iframe class="ml-2" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookStore.BookOneUrl}}"></iframe>
 
                 <iframe class="ml-4" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0"
                     scrolling="no" frameborder="0" src="{{BookStore.BookTwoUrl}}"></iframe>
 
             </div>
 
-            <div class="d-flex flex-row flex-wrap my-4 ">
+            <div class="d-flex flex-row flex-wrap my-4" style="justify-content: center;">
 
                 <iframe class="ml-2" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no"
                     frameborder="0" src="{{BookStore.BookThreeUrl}}"></iframe>
@@ -82,7 +74,7 @@
 
             </div>
 
-            <div class="d-flex flex-row flex-wrap my-4 ">
+            <div class="d-flex flex-row flex-wrap my-4" style="justify-content: center;">
 
                 <iframe class="ml-2" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no"
                     frameborder="0" src="{{BookStore.BookFiveUrl}}"></iframe>
@@ -96,10 +88,9 @@
         </div>
     </div>
 
-    <aside class="col-md-3" >
+    <aside class="col-md-3" style="border-left: 1px solid black;">
         <h4>Stock Market Watch</h4>
         <hr class="my-0">
-        side bar 
         {% for IndexValue in allIndexValue %}
         <div class="indexValue my-1 mx-auto  ">
             <small>
@@ -254,12 +245,67 @@
 
 <hr class="bg-dark">
 
-<div class="mid-bottom d-flex flex-row flex-wrap">
-    
+<div class="mid-section-1 p-4" style="justify-content: center;">
+
+    <h3>Global News</h3>
+
+    <div class="card-deck my-3">
+        {% for IndexGlobalNewsPost in allIndexGlobalNewsPost %}
+        <div class="card">
+            <img src="/{{IndexGlobalNewsPost.image}}" class="card-img-top" alt="image">
+            <div class="card-body">
+                <h5 class="card-title"> <a href="/global/{{IndexGlobalNewsPost.globalslug}}"> Card title
+                        {{IndexGlobalNewsPost.title}} </a></h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. <a href="/global/{{IndexGlobalNewsPost.globalslug}}"> Read more .. </a> </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Posted at : {{IndexGlobalNewsPost.timeStamp}} </small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+<hr class="bg-dark">
+
+<div class="mid-section-2 p-4" style="justify-content: center;">
+
+    <h3>Latest Private Jobs</h3>
+
+    <div class="card-deck my-3">
+        {% for PrivateJobPost in allIndexPrivateJobPost %}
+        <div class="card">
+            <img src="/{{PrivateJobPost.image}}" class="card-img-top" alt="image">
+            <div class="card-body">
+                <h5 class="card-title"> <a href="/private/{{PrivateJobPost.privateslug}}"> Card title
+                        {{PrivateJobPost.title}} </a></h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content.{{PrivateJobPost.content|truncatechars:50|safe }} <a
+                        href="/private/{{PrivateJobPost.privateslug}}"> Apply Now </a> </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Posted at :{{PrivateJobPost.timeStamp}} </small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+<hr class="bg-dark">
+
+<div class="bottom d-flex flex-row flex-wrap">
+
     <div class="box1 col-md-8">
         {% for IndexOtherPosts in allIndexOtherPosts %}
         <div class="row col-md-12">
-            <div class="content-list col-md-12">
+            <div class="content-list col-md-12 ">
                 <div class="list-group list-group-horizontal" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
                         href="#list-home" role="tab" aria-controls="home">
@@ -269,11 +315,11 @@
                     <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
                         href="#list-messages" role="tab"
                         aria-controls="messages">{{IndexOtherPosts.Comoditiesheading}}</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
-                        href="#list-settings" role="tab" aria-controls="settings">{{IndexOtherPosts.Otherheading}}</a>
+                    <!-- <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                        href="#list-settings" role="tab" aria-controls="settings">{{IndexOtherPosts.Otherheading}}</a> -->
                 </div>
             </div>
-            <div class="content my-2 p-2 border rounded">
+            <div class="content my-2 p-4 border rounded mx-2">
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="list-home" role="tabpanel"
                         aria-labelledby="list-home-list"> {{IndexOtherPosts.Globalcontent}} </div>
@@ -281,8 +327,8 @@
                         {{IndexOtherPosts.Currencycontent}} </div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-profile-list">
                         {{IndexOtherPosts.Comoditiescontent}} </div>
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-profile-list">
-                        {{IndexOtherPosts.Othercontent}}</div>
+                    <!-- <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-profile-list">
+                        {{IndexOtherPosts.Othercontent}}</div> -->
                 </div>
             </div>
         </div>
@@ -334,8 +380,6 @@
 
     </div>
 
-</div
-
-<hr class="bg-dark">
+</div <hr class="bg-dark">
 
 {% endblock body %}

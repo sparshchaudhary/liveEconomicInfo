@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Index.models import Contact, IndexValue, StockDetails, IndexPageStockContact, IndexJobPost, IndexNewsPost, IndexOtherPosts, StockOfTheWeek, StockOfTheMonth, HighRiskHighReturn, BookStore, NewsPic
+from Index.models import Contact, IndexValue, StockDetails, IndexPageStockContact, IndexJobPost, IndexNewsPost, IndexOtherPosts, StockOfTheWeek, StockOfTheMonth, HighRiskHighReturn, BookStore, NewsPic, IndexGlobalNewsPost, IndexPrivateJobPost
 
 # Register your models here.
 admin.site.register(Contact)
@@ -16,11 +16,25 @@ class IndexJobPostAdmin(admin.ModelAdmin):
     class Media:
         js = ('tinyinject.js',)
 
+# admin.site.register(IndexPrivateJobPost)
+@admin.register(IndexPrivateJobPost)
+class IndexPrivateJobPostAdmin(admin.ModelAdmin):
+    class Media:
+        js = ('tinyinject.js',)
+
+
 # admin.site.register(IndexNewsPost)
 @admin.register(IndexNewsPost)
 class IndexNewsPostAdmin(admin.ModelAdmin):
     class Media:
         js = ('tinyinject.js',)
+
+# admin.site.register(IndexGlobalNewsPost)
+@admin.register(IndexGlobalNewsPost)
+class IndexGlobalNewsPostAdmin(admin.ModelAdmin):
+    class Media:
+        js = ('tinyinject.js',)
+
 
 # admin.site.register(StockOfTheWeek)
 @admin.register(StockOfTheWeek)

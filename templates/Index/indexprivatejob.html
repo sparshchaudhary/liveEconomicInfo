@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} {{privatetrendgpost.title}} {% endblock title %}
+{% block body %}
+
+Index Private Job 
+
+<div class="container shadow p-3 my-4 mb-4 bg-white my-4 col-md-8">
+        <h2 class="news-post-title"> {{privatetrendgpost.title}} </h2>
+        <p class="news-post-meta mb-1">Posted at : {{privatetrendgpost.timeStamp}} | <strong
+        class="d-inline-block mb-1 text-primary"> Source: {{privatetrendgpost.author}} </strong> |
+        <div class="fb-like" data-href="http://127.0.0.1:8000/news/{{privatetrendgpost}}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+        <p class="my-2"> {{privatetrendgpost.content|safe}} </p>
+        <hr>
+        <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{privatetrendgpost}}" data-numposts="5" data-width=""></div>
+</div>
+
+{% endblock body %}
+
