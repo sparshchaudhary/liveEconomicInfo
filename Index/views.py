@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
-from Index.models import Contact, IndexValue, StockDetails, IndexPageStockContact, IndexJobPost, IndexNewsPost, IndexOtherPosts, StockOfTheWeek, StockOfTheMonth, HighRiskHighReturn, BookStore, NewsPic, IndexGlobalNewsPost, IndexPrivateJobPost
-
+from Index.models import Contact, IndicesValueIndexPage, StockDetails, IndexPageStockContact, IndexJobPost, IndexNewsPost, StockOfTheWeek, StockOfTheMonth, HighRiskHighReturn, BookStore, NewsPic, IndexGlobalNewsPost, IndexPrivateJobPost, StockMarketLatestNewsCard, IndexStockMarketDailyUpdatedNews, IndexSlideNewsPost, IndexOpinion
+from FinanceNews.models import SideNewsPics
+from Gjob.models import BookPost
 from django.contrib import messages
 
 # Create your views here.
@@ -9,16 +10,19 @@ def handler404(request, *args, **argv):
     return render(request, '404.html')
 
 def Index(request):
-    allIndexValue = IndexValue.objects.all().order_by('-created_on')
+    allIndicesValueIndexPage = IndicesValueIndexPage.objects.all().order_by('-created_on')
     allStockDetails = StockDetails.objects.all().order_by('-created_on')
     allIndexJobPost = IndexJobPost.objects.all().order_by('-created_on')
+    allIndexStockMarketDailyUpdatedNews = IndexStockMarketDailyUpdatedNews.objects.all().order_by('-created_on')
     allIndexPrivateJobPost = IndexPrivateJobPost.objects.all().order_by('-created_on')
     allIndexNewsPost = IndexNewsPost.objects.all().order_by('-created_on')
+    allIndexSlideNewsPost = IndexSlideNewsPost.objects.all().order_by('-created_on')
     allIndexGlobalNewsPost = IndexGlobalNewsPost.objects.all().order_by('-created_on')
-    allIndexOtherPosts = IndexOtherPosts.objects.all().order_by('-created_on')
+    allIndexOpinion = IndexOpinion.objects.all().order_by('-created_on')
     allBookStore = BookStore.objects.all().order_by('-created_on')
     allNewsPic = NewsPic.objects.all()
-    context = {'allIndexValue': allIndexValue, 'allStockDetails':allStockDetails, 'allIndexJobPost':allIndexJobPost, 'allIndexNewsPost':allIndexNewsPost, 'allIndexOtherPosts':allIndexOtherPosts, 'allBookStore':allBookStore, 'allNewsPic':allNewsPic, 'allIndexPrivateJobPost':allIndexPrivateJobPost, 'allIndexGlobalNewsPost':allIndexGlobalNewsPost}
+    allStockMarketLatestNewsCard = StockMarketLatestNewsCard.objects.all()
+    context = {'allIndicesValueIndexPage':allIndicesValueIndexPage, 'allStockDetails':allStockDetails, 'allIndexJobPost':allIndexJobPost, 'allIndexNewsPost':allIndexNewsPost, 'allBookStore':allBookStore, 'allNewsPic':allNewsPic, 'allIndexPrivateJobPost':allIndexPrivateJobPost, 'allIndexGlobalNewsPost':allIndexGlobalNewsPost, 'allStockMarketLatestNewsCard':allStockMarketLatestNewsCard, 'allIndexStockMarketDailyUpdatedNews':allIndexStockMarketDailyUpdatedNews, 'allIndexSlideNewsPost':allIndexSlideNewsPost, 'allIndexOpinion':allIndexOpinion}
     if request.method =='POST':
         username = request.POST['username']
         useremail =request.POST['useremail']
@@ -35,6 +39,9 @@ def Index(request):
 
 def about(request):
     return render(request, 'Index/About.html')
+
+def sitemap(request):
+    return render(request, 'Index/sitemap.xml')
 
 def contact(request):
     if request.method=='POST':
@@ -56,8 +63,8 @@ def search(request):
         allIndexNewsPost = IndexNewsPost.objects.none()
     else:
         allIndexNewsPost = IndexNewsPost.objects.filter(title__icontains=query)
-        # allFinanceNewsPostContent = FinanceNewsPost.objects.filter(content__icontains=query)
-        # allFinanceNewsPost = allFinanceNewsPostTitle.union(allFinanceNewsPostContent)
+        #allFinanceNewsPostContent = FinanceNewsPost.objects.filter(content__icontains=query)
+        #allFinanceNewsPost = allFinanceNewsPostTitle.union(allFinanceNewsPostContent)
 
     if allIndexNewsPost.count()== 0:
         messages.warning(request, "No search result found. Please refine your query.")
@@ -66,7 +73,8 @@ def search(request):
 
 def sow(request):
     allStockOfTheWeek = StockOfTheWeek.objects.all().order_by('-created_on')
-    context = {'allStockOfTheWeek':allStockOfTheWeek}
+    allIndicesValueIndexPage = IndicesValueIndexPage.objects.all().order_by('-created_on')
+    context = {'allStockOfTheWeek':allStockOfTheWeek,'allIndicesValueIndexPage':allIndicesValueIndexPage}
     return render(request, 'Index/sow.html', context)
 
 def som(request):
@@ -81,35 +89,46 @@ def hrhr(request):
 
 def tnews(request, slug):
     trendpost = IndexNewsPost.objects.filter(slug=slug).first()
-    context = {'trendpost':trendpost}
+    allSideNewsPics = SideNewsPics.objects.all()
+    context = {'trendpost':trendpost,'allSideNewsPics':allSideNewsPics}
     return render(request, 'Index/tnews.html', context)
+
+def slidenews(request, Islug):
+    slidetrendpost = IndexSlideNewsPost.objects.filter(Islug=Islug).first()
+    allSideNewsPics = SideNewsPics.objects.all()
+    context = {'slidetrendpost':slidetrendpost,'allSideNewsPics':allSideNewsPics}
+    return render(request, 'Index/slidenews.html', context)
 
 def globalnews(request, globalslug):
     gtrendpost = IndexGlobalNewsPost.objects.filter(globalslug=globalslug).first()
     context = {'gtrendpost':gtrendpost}
     return render(request, 'Index/globalnews.html', context)
 
+def indexopinion(request, opinionslug):
+    indexopinionpost = IndexOpinion.objects.filter(opinionslug=opinionslug).first()
+    context = {'indexopinionpost':indexopinionpost}
+    return render(request, 'Index/opinion.html', context)
+
 def testingnewslug(request, testslug):
     trendgpost = IndexJobPost.objects.filter(testslug=testslug).first()
-    context = {'trendgpost':trendgpost}
+    allSideNewsPics = SideNewsPics.objects.all()
+    allBookPost = BookPost.objects.all()
+    context = {'trendgpost':trendgpost, 'allSideNewsPics':allSideNewsPics, 'allBookPost':allBookPost}
     return render(request, 'Index/indexjobslug.html', context) #context
 
-    # return render(request, 'Index/testingslug.html')
+def lateststocknews(request, stockmarketnewsslug):
+    lstockmarketnews = IndexStockMarketDailyUpdatedNews.objects.filter(stockmarketnewsslug=stockmarketnewsslug).first()
+    context = {'lstockmarketnews':lstockmarketnews}
+    return render(request, 'Index/indexstockmarketnews.html', context)
 
 def indexprivatejob(request, privateslug):
     privatetrendgpost = IndexPrivateJobPost.objects.filter(privateslug=privateslug).first()
     context = {'privatetrendgpost':privatetrendgpost}
-    return render(request, 'Index/indexprivatejob.html', context) #context
-
-    # return render(request, 'Index/testingslug.html')
+    return render(request, 'Index/indexprivatejob.html', context)
 
 def privacypolicy(request):
     return render(request, 'Index/privacy.html')
 
 def termsofservice(request):
     return render(request, 'Index/termsofservice.html')
-
-
-
-
 

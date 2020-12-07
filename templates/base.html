@@ -5,10 +5,24 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="oHB_BPRfT9CqSG5e_WzahYAcTMJ4ajJ90iuyWQ1XR7A" />
+    <meta name="description"
+        content="Economic News- Read Latest Financial news, Stock/Share Market News, Latest Government Job Updates, Find Government Job, Government Exam Details, Stock Recommendations, Mutual Fund Details, Global News.">
+    <meta name="keywords"
+        content="economic news, business news, nse, bse, financial news, share market news india, stock market news, government job update, exam update">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=EB+Garamond" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Title & Favicon -->
+    <link rel="shortcut icon"
+        href="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/title-logo.png"
+        type="image/x-icon">
+    <title> {% block title %} {% endblock title %} </title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180248955-1"></script>
@@ -20,45 +34,30 @@
         gtag('config', 'UA-180248955-1');
     </script>
 
-    <!-- One Signal - Web push notification System -->
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="">
-    </script>
-    <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function () {
-            OneSignal.init({
-                appId: "c3887909-6e0a-41d8-808d-d8cb13f4471f",
-                notifyButton: {
-                    enable: true,
-                },
-            });
-        });
-    </script>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <title> {% block title %} {% endblock title %} </title>
-    <link rel="shortcut icon"
-        href="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/title-logo.png"
-        type="image/x-icon">
-
+    <!-- Facebook Comment -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0"
-        nonce="dTxMU5xk"></script>
+        nonce="dTxMU5xk">
+        </script>
+
+    <!-- SHARE BUTTON SCRIPT -->
+    <script type="text/javascript"
+        src="https://platform-api.sharethis.com/js/sharethis.js#property=5fc213a9e3acfa0012ca6b07&product=inline-share-buttons"
+        async="async">
+        </script>
 
 </head>
 
-<body class="justify-content-center mx-auto " onload=display_ct();>
+<body class="justify-content-center mx-auto " onload="display_ct();  typeWriter();">
 
-    <nav class="navbar navbar-expand-lg navbar-dark p-0 ">
+    <nav class="navbar navbar-expand-lg navbar-dark p-0 my-2 ">
         <div class="nn col-md-12 p-0">
             <div class="navbar-top d-flex flex-wrap flex-row justify-content-between align-items-center">
 
                 <div class="col-md-8" style=" justify-content: center;">
                     <div class="d-flex " style="justify-content: center;">
-                        <a href="/"> <img src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/logoimg.PNG"
-                            alt="Logo" / style="width: 425px; height: 60px;" class="img-fluid"></a>
+                        <a href="/"> <img
+                                src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/logoimg%20-%20up.PNG"
+                                alt="Logo" class="img-fluid"></a>
                     </div>
                     <div class="text-center mb-0 my-0">
                         <small> <span id="ct"> </span> </small>
@@ -78,37 +77,35 @@
                                     <i class="fa fa-facebook-official fa-lg"></i> </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank" style="margin-left: 5px;">
+                                <a href="https://twitter.com/EconomicInfo1" target="_blank" style="margin-left: 5px;">
                                     <i class="fa fa-twitter-square fa-lg"></i> </a>
                             </li>
-                            <li>
-                                <a href="#" target="_blank" style="margin-left: 5px;">
-                                    <i class="fa fa-google-plus-square fa-lg"></i></a>
-                            </li>
-                        </ul> 
+                        </ul>
                     </div>
-                    
+
                     <div style=" width: 100%;">
                         <marquee class="my-0 mb-0" width="100%" direction="left" height="auto" scrollamount="10"> <a
                                 id="marquee1" href="#" target="_blank">
                                 <h5 style="color: red;">Subscribe to Our Website to get Latest Financial News ,
                                     Government Job Updates & Stock Market Updates Daily.</h5>
                             </a></marquee>
-                    </div> 
+                    </div>
                 </div>
             </div>
 
             <div class="navbar-bottom-menu navbar-dark my-2 p-1" style=" background-color: #2664C8;">
                 <button class="navbar-toggler ml-2" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <button class="navbar-toggler mr-2" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float: right; height: 38px; width: 60px;" >
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation" style="float: right; height: 38px; width: 60px;">
                     <i class="fa fa-search"></i>
                 </button>
-                
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul class="navbar-nav mr-auto pl-4" style="font-size: 16px;">
@@ -167,15 +164,56 @@
 
     {% block body %}
     {% endblock body %}
-    <hr class="bg-dark mb-0">
-    <footer class="footer-fluid  my-0 py-3 text-light" style="background-color: #2D67E4; ;">
-        <p class="mb-0 text-center" style="color: white;">© 2020-2021 <a href="#" style="color: white;"> economicinfo.in
-            </a> </p>
-        <p class="mb-0 text-center" style="color: white;">
-            <a href="#" style="color: white;">Back to top |</a>
-            <a href="/privacy-policy" target="_blank" style="color: white;">Privacy Policy |</a>
-            <a href="/terms-of-service" target="_blank" style="color: white;">Terms & Conditions</a>
-        </p>
+
+    <footer class="footer-fluid text-light border rounded">
+
+        <div class="text-dark mt-0 bg-light d-flex flex-row flex-wrap">
+            <div class="col-md-6 p-4">
+                <img class="img-fluid"
+                    src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/logoimg%20-%20up.PNG"
+                    alt="economicinfo logo">
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="p-4">
+                    <h4>Important Links</h4>
+                    <ol class="list-unstyled mb-0">
+                        <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
+                        <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
+                        <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
+                    </ol>
+                </div>
+            </div>
+
+
+            <div class="col-md-3" >
+                <div class="p-4">
+                    <h4>Follow Us</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="https://twitter.com/EconomicInfo1" target="_blank">Twitter</a></li>
+                        <li><a href="#" target="_blank">Facebook</a></li>
+                        <li><a href="#" target="_blank">Instagram</a></li>
+                    </ol>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="p-4" style="background-color: #2664C8; height: 100px;">
+
+            <p class="mb-0 text-center" style="color: white;">© 2020-2021 <a href="#" style="color: white;">
+                    economicinfo.in
+                </a> </p>
+            <p class="mb-0 text-center" style="color: white;">
+                <a href="#" style="color: white;">Back to top |</a>
+                <a href="/sitemap" target="_blank" style="color: white;">Sitemap |</a>
+                <a href="/privacy-policy" target="_blank" style="color: white;">Privacy Policy |</a>
+                <a href="/terms-of-service" target="_blank" style="color: white;">Terms & Conditions</a>
+            </p>
+
+        </div>
     </footer>
 
     <!-- Optional JavaScript -->
@@ -207,6 +245,24 @@
             display_c();
         }
     </script>
+
+    <script>
+        var i = 0;
+        var txt = 'Stock Market Analysis';
+        var speed = 50;
+
+        function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("demo").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+    </script>
+
+    <!-- Mailchimp Link -->
+    <script
+        id="mcjs">!function (c, h, i, m, p) { m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p) }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/202dc4ca2ed2ca5d93791f4f8/0255acdc15db57778f298248f.js");</script>
 
 
 </body>

@@ -3,15 +3,17 @@
 {% block stockactive %} active {% endblock stockactive %}
 {% block body %}
 
-<div class="Main d-flex flex-row flex-wrap my-4">
+<div class="Main d-flex flex-row flex-wrap my-4 mx-auto" style="width: 100%; justify-content: center;">
 
-    <div class="main2 col-md-9 mx-auto mb-4">
+    <div class="main2 col-md-7 mx-0">
 
         <div class="search-section d-flex flex-wrap flex-row mb-2 border rounded p-2">
-            <h3 class="col-md-7"> Stock Market Analysis</h3>
-            <form method="get" action="/stock/ssearch" target="_blank" class="form-inline my-2 my-lg-0 col-md-4">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Stock Name" aria-label="Search" name="squery" id="squery">
-                <button class="btn btn-outline-primary my-2 my-sm-0" style="width: 30%;" type="submit">Search</button>
+            <h4 id="demo" class="col-md-7"></h4>
+            <form method="get" action="/stock/ssearch" class="form-inline my-2 my-lg-0 col-md-5">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Stock Name" aria-label="Search"
+                    name="squery" id="squery" style="width: 65%;">
+                <button class="btn btn-outline-primary my-2 my-sm-0 ml-1" style="width: 25%;"
+                    type="submit">Search</button>
             </form>
         </div>
 
@@ -19,9 +21,9 @@
 
             <div class="box1 col-md-8 p-4 mb-4 mx-auto border rounded">
 
-                <h4>Active Positional / Swing Trade </h4>
+                <h4>Active Swing Trade </h4>
                 <table class="table table-bordered shadow p-3 my-4 mb-4 bg-white">
-                    <thead style="text-align: center;" >
+                    <thead style="text-align: center;">
                         <tr>
                             <th scope="col">Date</th>
                             <th scope="col">Stock</th>
@@ -29,20 +31,21 @@
                         </tr>
                     </thead>
                     {% for SwingTradePost in allSwingTradePost %}
-                    <tbody style="text-align: center;" >
+                    <tbody style="text-align: center;">
                         <tr>
                             <td> {{SwingTradePost.date}} </th>
                             <td> {{SwingTradePost.stockname}} </td>
                             <td> {{SwingTradePost.priceandaction}} <br>
-                                <a href="/stock/{{SwingTradePost.slug}}">Know More</a></td>
+                                <a href="/stock/{{SwingTradePost.slug}}" target="_blank">Know More</a></td>
                         </tr>
                     </tbody>
                     {% endfor %}
                 </table>
                 <hr>
 
-                <p> <a href="/stock/lasttrade"> <button type="button" class="btn btn-outline-success">  <strong> Previous Trade Call Results </strong> <i class="fa fa-arrow-circle-right"></i>
-                </button> </a> </p>
+                <p> <a href="/stock/lasttrade" target="_blank"> <button type="button" class="btn btn-outline-success">
+                            <strong> Previous Trade Call Results </strong> <i class="fa fa-arrow-circle-right"></i>
+                        </button> </a> </p>
 
             </div>
 
@@ -57,9 +60,7 @@
                     <div class="collapse my-3" id="{{StockCard.id}}">
                         <div class="card card-body">
                             <ol>
-                                <li> <strong> {{StockCard.stockname1}} </strong> 
-                                    <!-- <a href="#"> <small> <sub> Know more </sub> </small> </a>   -->
-                                </li>
+                                <li> <strong> {{StockCard.stockname1}} </strong></li>
                                 <li> <strong> {{StockCard.stockname2}} </strong></li>
                                 <li> <strong> {{StockCard.stockname3}} </strong></li>
                                 <li> <strong> {{StockCard.stockname4}} </strong></li>
@@ -69,26 +70,213 @@
                     </div>
                 </div>
                 {% endfor %}
+
+            </div>
+
+        </div>
+
+        <hr class="bg-dark">
+
+        {% for StockDetails in allStockDetails %}
+        <div class="share d-flex flex-row flex-wrap" style="justify-content: center;">
+
+            <div class="sidebtn-stockoftheweek ">
+                <button class="btn btn-outline-primary my-2 w-100" type="button" data-toggle="collapse"
+                    data-target="#collapsexampl" aria-expanded="false" aria-controls="collapseExample">Stock of
+                    the
+                    Week
+                </button>
+
+                <div class="collapse my-3" id="collapsexampl">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{StockDetails.stockofweektimeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Price & Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"> {{StockDetails.stockofweekshare}} </th>
+                                <td>{{StockDetails.stockofweeksharedetail}}
+                                    <a href="/sow" target="_blank"> <br> Know More</a>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="sidebtn-stockofthemonth ml-4">
+                <button class="btn btn-outline-success my-2 w-100" type="button" data-toggle="collapse"
+                    data-target="#collapspl" aria-expanded="false" aria-controls="collapseExample">Stock of the
+                    Month
+                </button>
+
+                <div class="collapse my-3" id="collapspl">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{StockDetails.stockofmonthtimeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Stock name</th>
+                                <th scope="col">Price & Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"> {{StockDetails.stockofmonthshare}} </th>
+                                <td> {{StockDetails.stockofmonthsharedetail}}
+                                    <!-- <a href="/som" target="_blank"> <br> Know More</a>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="sidebtn-highriskhighreturn ml-4">
+                <button class="btn btn-outline-danger my-2 w-100" type="button" data-toggle="collapse"
+                    data-target="#csexampl" aria-expanded="false" aria-controls="collapseExample">High Risk High
+                    Return
+                </button>
+
+                <div class="collapse my-3" id="csexampl">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{StockDetails.hrhrsharetimeStamp}} </p>
+                    </small>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Stock name</th>
+                                <th scope="col">Price & Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"> {{StockDetails.hrhrshare}} </th>
+                                <td> {{StockDetails.hrhrsharedetail}}
+                                    <!-- <a href="/hrhr" target="_blank"> <br> Know
+                                        More</a> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        {% endfor %}
+
+        <hr class="bg-dark">
+        <!-- <h4 style="text-align: left;" >Previous Stock of Week</h4>
+        <div class="previous-share d-flex flex-row flex-wrap" style="justify-content: center;">
+
+            <div class="sidebtn-stockoftheweek ">
+                <button class="btn btn-outline-primary my-2 w-100" type="button" data-toggle="collapse"
+                    data-target="#collapsexampl" aria-expanded="false" aria-controls="collapseExample">Stock of
+                    the
+                    Week
+                </button>
+
+                <div class="collapse my-3" id="collapsexampl">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{StockDetails.stockofweektimeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Price & Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"> {{StockDetails.stockofweekshare}} </th>
+                                <td>{{StockDetails.stockofweeksharedetail}}
+                                    <a href="/sow" target="_blank"> <br> Know More</a>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="bg-dark"> -->
+
+        <div class="p-2">
+            <h2> Opinion </h2>
+            {% for StockMarketOpinionPost in allStockMarketOpinionPost %}
+            <div class="media">
+                <img src=".." class="mr-3" alt="opinion img">
+                <div class="media-body">
+                    <h5 class="mt-0"> <a href="opinion/{{StockMarketOpinionPost.stockopinionslug}}" target="_blank" > {{StockMarketOpinionPost.title}} </a> </h5>
+                    {{StockMarketOpinionPost.content|safe|truncatewords:2}}
+                </div>
+            </div>
+            {% endfor %}
+            <hr>
+        </div>
+
     </div>
 
-    <aside class="col-md-3 ">
+    <aside class="col-md-3 ml-0 ">
 
-        <div class="p-4 mb-3 bg-light rounded">
-            <h4 class="Calls">Long Term Bets <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red" xmlns="http://www.w3.org/2000/svg">
+        <h5>Stock Market News</h5>
+        <hr class="my-0">
+        {% for StockMarketLatestNewsCard in allStockMarketLatestNewsCard %}
+        <div id="carouselExampleCaptions" class="carousel slide my-1" data-ride="carousel"
+            style="justify-content: center;">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active border rounded"> <img
+                        src='https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{StockMarketLatestNewsCard.StockMarketLatestNewsCardImage1}}'
+                        class="d-block img-fluid" alt="News image" style="height: 300px; width: 350px;" >
+                </div>
+                <div class="carousel-item border rounded"> <img
+                        src='https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{StockMarketLatestNewsCard.StockMarketLatestNewsCardImage2}}'
+                        class="d-block  img-fluid" alt="News image" style="height: 300px; width: 350px;" >
+                </div>
+                <div class="carousel-item border rounded"> <img
+                        src='https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{StockMarketLatestNewsCard.StockMarketLatestNewsCardImage3}}'
+                        class="d-block  img-fluid" alt="News image" style="height: 300px; width: 350px;" >
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        {% endfor %}
+
+        <hr class="bg-dark">
+
+        <div class="p-4 mb-3 bg-light">
+            <h4 class="Calls">Long Term Bets <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill"
+                    fill="red" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                 </svg> </h4>
 
             <div class="1 my-2">
-                <button class="btn btn-primary w-100 p-2" type="button" data-toggle="collapse" data-target="#colsexampl"aria-expanded="false" aria-controls="collapseExample" 
-                    style="background-color: #2C61B1;">
+                <button class="btn btn-primary w-100 p-2" type="button" data-toggle="collapse" data-target="#colsexampl"
+                    aria-expanded="false" aria-controls="collapseExample" style="background-color: #2C61B1;">
                     Check Stock List
                 </button>
 
                 <div class="collapse my-3" id="colsexampl">
-                    <table class="table table-bordered text-center"  >
+                    <table class="table table-bordered text-center">
                         <thead>
                             <tr>
                                 <th scope="col">Date</th>
@@ -110,24 +298,312 @@
             </div>
         </div>
 
-        <div class="p-4">
-            <h4 class="font-italic">Important Links</h4>
-            <ol class="list-unstyled mb-0">
-                <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
-                <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
-                <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>   
+        <hr class="bg-dark">
+
+        <h5>Stock Market Indices</h5>
+
+        {% for IndicesValueIndexPage in allIndicesValueIndexPage %}
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
             </ol>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{IndicesValueIndexPage.timeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered text-center">
+                        <tbody>
+                            <tr>
+                                <td scope="col"> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty 50 </a>
+                                </td>
+                                <td scope="col"> <a class="text-dark" target="_blank"> {{IndicesValueIndexPage.nifty50}}
+                                    </a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        BSE Sensex </a>
+                                </td>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.bseindia.com/index.html"
+                                        target="_blank">
+                                        {{IndicesValueIndexPage.BSEsensex}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Bank </a>
+                                </td>
+                                <td> <a class="text-dark">
+                                        {{IndicesValueIndexPage.niftyBank}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Midcap </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyMidcap}}</a>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{IndicesValueIndexPage.timeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered text-center">
+                        <tbody>
+                            <tr>
+                                <td scope="col"> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Pharma </a>
+                                </td>
+                                <td scope="col"> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyPharma}} </a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty FMCG </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyFMCG}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Auto </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyAuto}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty IT </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyIT}}</a>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{IndicesValueIndexPage.timeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered text-center">
+                        <tbody>
+                            <tr>
+                                <td scope="col"> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Smallcap 50 </a>
+                                </td>
+                                <td scope="col"> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftySmallcap}} </a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty PSU Bank </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyPsuBank}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Metal </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyMetal}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        India VIX </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.IndiaVix}}</a>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+
+            </div>
+            <small>
+                <p> Data Source : <a href="https://www.nseindia.com/" target="_blank">nseindia</a> and <a
+                        href="https://www.bseindia.com/" target="_blank">bseindia</a>
+
+                </p>
+            </small>
+        </div>
+        {% endfor %}
+
+        <hr class="bg-dark">
+
+        <h5>Open Demat Account</h5>
+        <div class="border rounded">
+            <img class="img-fluid my-0"
+                src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/Index/upstox-up-1.png"
+                alt="Upstox Banner"> <br>
+            <div class="p-4">
+                <hr class="mt-2 mb-4">
+                <h5>Discounted Broker</h5>
+                <h5>Zero brokerage charge</h5>
+
+            </div>
+
+            <a href="https://bv7np.app.goo.gl/LfBedQ8iVqALC4rq8" target="_blanl">
+                <button class="btn btn-outline-primary ml-4 my-2 w-75">Create Account Now</button> </a>
         </div>
 
-        <div class="p-4">
-            <h4 class="font-italic">Follow Us</h4>
-            <ol class="list-unstyled">
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Telegram</a></li>
-            </ol>
+    </aside>
+
+</div>
+
+<div class="g d-flex flex-row flex-wrap mx-auto" style="width: 100%; justify-content: center;">
+
+    <div class="col-md-10">
+        <hr class="bg-dark">
+    </div>
+</div>
+
+<div class="down d-flex flex-row flex-wrap my-2 mx-auto" style="width: 100%; justify-content: center;">
+
+    <div class="b-inside col-md-7">
+
+        <div class="p-0">
+
+            <h2>Technical Indicator's</h2>
+            <hr>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="list-rsi-list" data-toggle="list"
+                            href="#list-rsi" role="tab" aria-controls="rsi">RSI</a>
+                        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                            href="#list-profile" role="tab" aria-controls="profile">MACD</a>
+                        <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                            href="#list-messages" role="tab" aria-controls="messages">Volume</a>
+                        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                            href="#list-settings" role="tab" aria-controls="settings">EMA</a>
+                        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                            href="#list-settings" role="tab" aria-controls="settings">SMA</a>
+                        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                            href="#list-settings" role="tab" aria-controls="settings">MFI</a>
+                        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                            href="#list-settings" role="tab" aria-controls="settings">Bolliger Band</a>
+                        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                            href="#list-settings" role="tab" aria-controls="settings">VWAP</a>
+                    </div>
+                </div>
+                <div class="col-8 border rounded p-2">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="list-rsi" role="tabpanel"
+                            aria-labelledby="list-rsi-list" style="text-align: justify;" >
+                            <p>  <h5> <strong>RSI (Relative Strength Index)</strong> </h5></p>
+                            <p>
+                                It is a Technical Indicator which is used to analysis the strength of a stock or financial instruments. It was developed by <a href="https://en.wikipedia.org/wiki/J._Welles_Wilder_Jr." target="_blank">J. Welles Wilder</a> in 1978. It is a momentum indicator which move within a range of 0 to 100 in which range above 70 shows an overbought zone and as per technical analyst stock price might drop down also range below 30 shown and oversold zone and as per technical analyst stock price might bounce back and move upward but it is not compulsory. 
+                            </p>
+                            <img class="img-fluid" src="https://source.unsplash.com/500x300/?stock,sharemarket" alt="image">
+                            <p>For more information : <a href="https://en.wikipedia.org/wiki/Relative_strength_index" target="_blank" > Click here</a> </p>
+                            <p>Source : wikipedia</p>
+                        </div>
+                        <div class="tab-pane fade" id="list-profile" role="tabpanel"
+                            aria-labelledby="list-profile-list" style="text-align: justify;">
+                            <p> <h5> <strong> MACD (Moving Average Convergence Divergence)</strong> </h5> </p>
+                            <p>
+                                MACD is a momentum indicator which calculate the difference between mvoing averages and show possibility of movement for both side. It was developed by <a href="https://cmtassociation.org/presenter/gerald-appel/" target="_blank"> Gerald Appel </a> in the late 1970s. The MACD is the subtraction value of 26 period EMA (Exponential moving average) from 12 period EMA (Exponential moving average). The result of the subtraction value will be shown as a black line which is also called as "MACD LINE". Also a 9 period EMA (Exponential moving average) is called as "SIGNAL LINE". 
+                            </p>
+                            <p> 
+                                Whenever the "MACD LINE" cross over the "SIGNAL LINE" it indicates a Bullish sentiment and if "MACD LINE" cross below the "SIGNAL LINE" it indicates a Bearish sentiment.
+                            </p>
+                            <img class="img-fluid" src="https://source.unsplash.com/500x300/?stock,sharemarket" alt="image">
+                            <p>For more information : <a href="https://en.wikipedia.org/wiki/MACD" target="_blank" > Click here</a> </p>
+                            <p>Source : wikipedia</p>
+                        </div>
+                        <div class="tab-pane fade" id="list-messages" role="tabpanel"
+                            aria-labelledby="list-messages-list"> Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Dolor eveniet eius omnis suscipit officia, impedit deleniti quaerat reiciendis
+                            corrupti architecto aut dignissimos iusto nulla necessitatibus earum sint quod sapiente
+                            distinctio! </div>
+                        <div class="tab-pane fade" id="list-settings" role="tabpanel"
+                            aria-labelledby="list-settings-list"> Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Culpa ad veritatis delectus, quasi eaque sequi! </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
+        <hr class="bg-dark">
+    </div>
+
+    <aside class="col-md-3 ml-0">
+
+        <div class="my4 p-3 bg-light">
+            <h5>Subscribe for Stock Updates</h5>
+
+            <form method="post" , action="/stock/market">
+                {% csrf_token %}
+                <div class="type p-1 " style="background-color: white;">
+                    <input type="email" class="form-control" id="useremail" name="useremail"
+                        placeholder="Enter Email Address here" aria-describedby="email">
+                </div>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your information with
+                    anyone.</small>
+                <button type="submit" class="btn btn-primary my-2 col-md-6 ">Subscribe</button>
+            </form>
+        </div>
+
+        <hr class="bg-dark">
+
+        <h5>Open Zerodha Demat Account</h5>
+        <div class="border rounded">
+            <img class="img-fluid my-0"
+                src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/Index/zerodha-up.PNG"
+                alt="Zerodha Logo"> <br>
+            <div class="p-4">
+                <hr class="mt-2 mb-4">
+                <h5>Discounted Broker</h5>
+                <h5>Zero brokerage charge</h5>
+
+            </div>
+
+            <a href="https://zerodha.com/?c=HG4919" target="_blanl">
+                <button class="btn btn-outline-primary ml-4 my-2 w-75">Create Account Now</button> </a>
+        </div>
+    
     </aside>
 
 </div>

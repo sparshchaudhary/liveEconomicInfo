@@ -2,19 +2,218 @@
 {% block title %} Stock of the Week {% endblock title %}
 {% block body %}
 
-    {% for StockOfTheWeek in allStockOfTheWeek %}
-    <div class="container my-4 col-md-8 shadow p-3 my-4 mb-4 bg-white">
-        <h2 class="news-post-title"> Stock of the Week : {{StockOfTheWeek.title}} </h2>
-        <p class="news-post-meta mb-1">Posted at : {{StockOfTheWeek.timeStamp}} | <strong
-            class="d-inline-block mb-1 text-primary"> Sector: {{StockOfTheWeek.sector}} </strong>
-            <div class="fb-like" data-href="http://127.0.0.1:8000/news/{{StockOfTheWeek}}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
-        <p class="my-2"> {{StockOfTheWeek.content|safe}} </p>
-        <hr>
-        <p> <a href="/"> <button type="button" class="btn btn-sm btn-outline-dark"> <i class="fa fa-arrow-left"></i> Back to Home</button> </a> </p>
-        <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{StockOfTheWeek}}" data-numposts="5" data-width=""></div>
+<div class="mainbody d-flex flex-row flex-wrap my-4 mx-auto" style="width: 100%; justify-content: center;">
+
+    <div class="container my-4 mx-0 col-md-7">
+
+        {% for StockOfTheWeek in allStockOfTheWeek %}
+            <h2 class="news-post-title"> Stock of the Week : {{StockOfTheWeek.title}} </h2>
+            <p class="news-post-meta mb-1">Posted at : {{StockOfTheWeek.timeStamp}} <br> <strong
+                    class="d-inline-block mb-1 text-dark"> Sector: {{StockOfTheWeek.sector}} </strong>
+
+            <hr class="bg-dark">
+            <div class="sharethis-inline-share-buttons"></div>
+            <hr class="bg-dark">
+
+            <p class="my-2"> {{StockOfTheWeek.content|safe}} </p>
+            <hr>
+
+            <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{StockOfTheWeek}}" data-numposts="5"
+                data-width=""></div>
+        {% endfor %}
+
     </div>
-    {% endfor %}
 
+
+    <aside class="col-md-3 my-4 ml-0">
+        
+        <h5>Stock Market Indices</h5>
+
+        {% for IndicesValueIndexPage in allIndicesValueIndexPage %}
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{IndicesValueIndexPage.timeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered text-center">
+                        <tbody>
+                            <tr>
+                                <td scope="col"> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty 50 </a>
+                                </td>
+                                <td scope="col"> <a class="text-dark" target="_blank"> {{IndicesValueIndexPage.nifty50}}
+                                    </a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        BSE Sensex </a>
+                                </td>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.bseindia.com/index.html"
+                                        target="_blank">
+                                        {{IndicesValueIndexPage.BSEsensex}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Bank </a>
+                                </td>
+                                <td> <a class="text-dark">
+                                        {{IndicesValueIndexPage.niftyBank}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Midcap </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyMidcap}}</a>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{IndicesValueIndexPage.timeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered text-center">
+                        <tbody>
+                            <tr>
+                                <td scope="col"> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Pharma </a>
+                                </td>
+                                <td scope="col"> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyPharma}} </a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty FMCG </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyFMCG}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Auto </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyAuto}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty IT </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyIT}}</a>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <small>
+                        <p class="my-0 text-muted">Last Updated : {{IndicesValueIndexPage.timeStamp}}</p>
+                    </small>
+                    <table class="table table-bordered text-center">
+                        <tbody>
+                            <tr>
+                                <td scope="col"> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Smallcap 50 </a>
+                                </td>
+                                <td scope="col"> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftySmallcap}} </a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty PSU Bank </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyPsuBank}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        Nifty Metal </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.niftyMetal}}</a>
+                            </tr>
+                            <tr>
+                                <td> <a class="text-dark" data-toggle="tooltip" data-placement="bottom"
+                                        title="Click me to get Updated Value" href="https://www.nseindia.com/"
+                                        target="_blank">
+                                        India VIX </a>
+                                </td>
+                                <td> <a class="text-dark" target="_blank">
+                                        {{IndicesValueIndexPage.IndiaVix}}</a>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+
+            </div>
+            <small>
+                <p> Data Source : <a href="https://www.nseindia.com/" target="_blank">nseindia</a> and <a
+                        href="https://www.bseindia.com/" target="_blank">bseindia</a>
+
+                </p>
+            </small>
+        </div>
+        {% endfor %}
+
+        <hr class="bg-dark">
+
+        <h5>Open Demat Account</h5>
+        <div class="border rounded">
+            <img class="img-fluid my-0"
+                src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/Index/upstox-up-1.png"
+                alt="Upstox Banner"> <br>
+            <div class="p-4">
+                <hr class="mt-2 mb-4">
+                <h5>Discounted Broker</h5>
+                <h5>Zero brokerage charge</h5>
+
+            </div>
+
+            <a href="https://bv7np.app.goo.gl/LfBedQ8iVqALC4rq8" target="_blanl">
+                <button class="btn btn-outline-primary ml-4 my-2 w-75">Create Account Now</button> </a>
+        </div>
+
+    </aside>
+
+</div>
 {% endblock body %}
-
-

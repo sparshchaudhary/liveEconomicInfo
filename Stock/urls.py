@@ -7,7 +7,9 @@ urlpatterns = [
     path('market', views.page, name='page'),
     path('lasttrade', views.lasttrade, name='lasttrade'),
     path('ssearch', views.ssearch, name='ssearch'),
-    path('<str:slug>', views.StockPost, name='StockPost')
+    path('<str:slug>', views.StockPost, name='StockPost'),
+    path('opinion/<str:stockopinionslug>', views.StockMarketOpinion, name='StockMarketOpinion'),
+
 ]
 
 

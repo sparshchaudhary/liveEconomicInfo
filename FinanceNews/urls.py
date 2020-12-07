@@ -4,6 +4,6 @@ from .import views
 
 urlpatterns = [
     path('finance', views.news, name='news'),
-    path('<str:slug>', views.FinanceNewsPostPage, name='FinanceNewsPostPage')
+    path('latest/<str:Fslug>', views.FinancenewspostPage, name='FinancenewspostPage'),
 ]
 

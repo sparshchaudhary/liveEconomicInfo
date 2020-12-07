@@ -22,10 +22,21 @@ class IndexPageStockContact (models.Model):
     def __str__(self):
         return 'Message from  --- ' +  self.username + '--- ' + self.useremail 
 
-class IndexValue(models.Model):
+class IndicesValueIndexPage(models.Model):
     sno = models.AutoField(primary_key=True)
-    niftyvalue = models.TextField()
-    sensexvalue = models.TextField()
+    nifty50 = models.TextField()
+    BSEsensex = models.TextField()
+    niftyBank = models.TextField()
+    niftyMidcap = models.TextField()
+    niftyPharma = models.TextField()
+    niftyFMCG = models.TextField()
+    niftyAuto = models.TextField()
+    niftyIT = models.TextField()
+    niftySmallcap = models.TextField()
+    niftyPsuBank = models.TextField()
+    niftyMetal = models.TextField()
+    IndiaVix = models.TextField()
+
     timeStamp = models.DateTimeField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -33,7 +44,7 @@ class IndexValue(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.niftyvalue + ' --- '  + ' Index Value'
+        return self.nifty50 + ' --- '  + ' Index Value'
 
 class StockDetails (models.Model):
     sno = models.AutoField(primary_key=True)
@@ -88,35 +99,22 @@ class IndexNewsPost (models.Model):
     def __str__(self):
         return self.title + ' ---  by ---  ' + self.author
 
-class IndexOtherPosts (models.Model):
+class IndexSlideNewsPost (models.Model):
     sno = models.AutoField(primary_key=True)
-	
-    Globalheading = models.CharField(max_length=150)
-    Globalcontent = models.TextField()
-    Globalimage = models.ImageField(upload_to="Index/images", default="")
-    GlobaltimeStamp = models.DateTimeField(default=0, blank=True)  
-
-    Currencyheading = models.CharField(max_length=150)
-    Currencycontent = models.TextField()
-    Currencyimage = models.ImageField(upload_to="Index/images", default="")
-    CurrencytimeStamp = models.DateTimeField(default=0, blank=True)  
-	
-    Comoditiesheading = models.CharField(max_length=150)
-    Comoditiescontent = models.TextField()
-    Comoditiesimage = models.ImageField(upload_to="Index/images", default="")
-    ComoditiestimeStamp = models.DateTimeField(default=0, blank=True)  
-	
-    Otherheading = models.CharField(max_length=150)
-    Othercontent = models.TextField()
-    Otherimage = models.ImageField(upload_to="Index/images", default="")
-    OthertimeStamp = models.DateTimeField(default=0, blank=True)
+    title = models.CharField(max_length=150)
+    content = models.TextField()
+    author = models.CharField(max_length=20)
+    Islug = models.CharField(max_length=150)
+    views = models.IntegerField(default=0)
+    image = models.ImageField(upload_to="Index/SlidePostImages", default="")
     created_on = models.DateTimeField(auto_now_add=True)
+    timeStamp = models.DateTimeField(blank=True)
 
     class Meta:
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.Globalheading
+        return self.title + ' ---  by ---  ' + self.author
 
 class StockOfTheWeek (models.Model):
     sno = models.AutoField(primary_key=True)
@@ -174,27 +172,21 @@ class BookStore (models.Model):
 	
     BookOneName = models.CharField(max_length=150)
     BookOneUrl = models.URLField(max_length=500)
-    # BookOneImage = models.ImageField(upload_to="Index/images", default="")
 
     BookTwoName = models.CharField(max_length=150)
     BookTwoUrl = models.URLField(max_length=500)
-    # BookTwoImage = models.ImageField(upload_to="Index/images", default="")
 	
     BookThreeName = models.CharField(max_length=150)
     BookThreeUrl = models.URLField(max_length=500)
-    # BookThreeImage = models.ImageField(upload_to="Index/images", default="")
 
     BookFourName = models.CharField(max_length=150)
     BookFourUrl = models.URLField(max_length=500)
-    # BookThreeImage = models.ImageField(upload_to="Index/images", default="")
 
     BookFiveName = models.CharField(max_length=150)
     BookFiveUrl = models.URLField(max_length=500)
-    # BookThreeImage = models.ImageField(upload_to="Index/images", default="")
 
     BookSixName = models.CharField(max_length=150)
     BookSixUrl = models.URLField(max_length=500)
-    # BookThreeImage = models.ImageField(upload_to="Index/images", default="")
 	
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -209,6 +201,47 @@ class NewsPic (models.Model):
     NewsImage1 = models.ImageField(upload_to="Index/images", default="")
     NewsImage2 = models.ImageField(upload_to="Index/images", default="")
     NewsImage3 = models.ImageField(upload_to="Index/images", default="")
+
+class StockMarketLatestNewsCard (models.Model):
+    sno = models.AutoField(primary_key=True)
+    StockMarketLatestNewsCardImage1 = models.ImageField(upload_to="Index/StockMarketNewsCards", default="")
+    StockMarketLatestNewsCardImage2 = models.ImageField(upload_to="Index/StockMarketNewsCards", default="")
+    StockMarketLatestNewsCardImage3 = models.ImageField(upload_to="Index/StockMarketNewsCards", default="")
+
+class IndexStockMarketDailyUpdatedNews (models.Model):
+    sno = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=150)
+    content = models.TextField()
+    author = models.CharField(max_length=20)
+    stockmarketnewsslug = models.CharField(max_length=150)
+    views = models.IntegerField(default=0)
+    image = models.ImageField(upload_to="Index/IndexStockMarketDailyUpdatedNews", default="")
+    created_on = models.DateTimeField(auto_now_add=True)
+    timeStamp = models.DateTimeField(blank=True)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return self.title + ' ---   by  ---  ' + self.author
+
+class IndexOpinion (models.Model):
+    sno = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=150)
+    content = models.TextField()
+    author = models.CharField(max_length=20)
+    opinionslug = models.CharField(max_length=150)
+    views = models.IntegerField(default=0)
+    image = models.ImageField(upload_to="Index/Opinionimages", default="")
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_updated_on = models.DateTimeField(auto_now_add=True)
+    timeStamp = models.DateTimeField(blank=True)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return self.title + ' ---  by ---  ' + self.author
 
 class IndexGlobalNewsPost (models.Model):
     sno = models.AutoField(primary_key=True)
@@ -244,4 +277,6 @@ class IndexPrivateJobPost (models.Model):
 
     def __str__(self):
         return self.title + ' ---   by  ---  ' + self.author
+
+
 

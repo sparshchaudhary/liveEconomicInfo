@@ -3,50 +3,70 @@
 {% block aboutactive %} active {% endblock aboutactive %}
 {% block body %}
 
-<div class="content my-2 p-4 d-flex flex-row flex-wrap ">
-    <h3><p class="font-italic">"Impossible happens all the time, You just have to believe it can." </p></h3>
+<div class="content d-flex flex-row flex-wrap my-4 mx-auto" style="width: 100%; justify-content: center;">
 
-    <div class="col-md-9 p-4 bg-light">
-        <h4>About Us</h4>
-        <p> We are a team of Engineers, Management Graduates with diversified experience. We have taken it as a mission to provide accurate and authentic information to all our users focused in following category. </p>
+  <div class="col-md-8 mx-0 p-4 bg-light">
 
-        <div class="info p-4" style="background-color: white;">
-            <ul>
-                <li><a href="/news/finance" target="_blank"><h5> Latest Finance News</h5> </a> </li>We promise to deliver all finance news in a filtered way with accurate data, authentic links and with all Pros & Cons of the news. We also have a added section at the bottom of each Financial news about how it can affect your wallet.
-                <hr>
-                <li><a href="/job/latest" target="_blank"><h5>Latest Government Jobs Updates</h5> </a> </li> We provide details about latest Government Vacancies offered by Central Government & State Government with accurate information regarding exam dates, syllabus, eligibility, status, salary benefits, Form process and Results.
-                <hr>
-                <li><a href="/job/latest" target="_blank"><h5>Government Jobs Exam Preparation</h5> </a> </li>
-                WE also provide free Pdf Books and Sources to our Subscribers to help them prepare for exams and Interviews.
-                <hr>
-                <li><a href="/stock/market" target="_blank"><h5>Investment Guide : Direct Stock & Mutual Funds</h5> </a> </li> Our focus is to share an Unbiased views with proper fundamental points to help you take right decision for your wealth creation in both Short & Long term.  <strong>  Happy Investing. <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                </svg>  </strong>
-            </ul>
+    <h4>About Us</h4>
+    <p> We are a team of Engineers, Management Graduates with diversified experience. We have taken it as a mission to
+      provide accurate and authentic information to all our users focused in following category. </p>
 
-        </div>
+    <div class="info p-4" style="background-color: white;">
+      <ul>
+        <li><a href="/news/finance" target="_blank">
+            <h5> Latest Finance News</h5>
+          </a> </li>We promise to deliver all finance news in a filtered way with accurate data, authentic links and
+        with all Pros & Cons of the news.
+        <hr>
+        <li><a href="/job/latest" target="_blank">
+            <h5>Latest Government Jobs Updates</h5>
+          </a> </li> We provide details about latest Government Vacancies offered by Central Government & State
+        Government with accurate information regarding exam dates, syllabus, eligibility, status, salary benefits, Form
+        process and Results.
+        <hr>
+        <li><a href="/job/latest" target="_blank">
+            <h5>Government Jobs Exam Preparation</h5>
+          </a> </li>
+        WE also provide free Pdf Books and Sources to our Subscribers to help them prepare for exams and Interviews.
+        <hr>
+        <li><a href="/stock/market" target="_blank">
+            <h5>Investment Guide : Direct Stock & Mutual Funds</h5>
+          </a> </li> Our focus is to share an Unbiased views with proper fundamental points to help you take right
+        decision for your wealth creation in both Short & Long term. <strong> Happy Investing. <svg width="1em"
+            height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+          </svg> </strong>
+      </ul>
+
     </div>
 
-    <aside class="col-md-3 my-2">
-        <div class="p-4">
-          <h4>Important Links</h4>
-          <ol class="list-unstyled mb-0">
-            <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
-            <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
-            <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
-          </ol>
-        </div>
-    
-        <div class="p-4">
-          <h4>Follow Us</h4>
-          <ol class="list-unstyled">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Telegram</a></li>
-          </ol>
-        </div>
-    </aside>
-    
+    <div class="my-4 p-4" style="background-color: white;">
+      <h5>
+        <p class="font-italic">"Impossible happens all the time, You just have to believe it can." </p>
+      </h5>
+    </div>
+  </div>
+
+  {% comment %} <aside class="col-md-3 ml-0">
+    <div class="p-4">
+      <h4>Important Links</h4>
+      <ol class="list-unstyled mb-0">
+        <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
+        <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
+        <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
+      </ol>
+    </div>
+
+    <div class="p-4">
+      <h4>Follow Us</h4>
+      <ol class="list-unstyled">
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Telegram</a></li>
+      </ol>
+    </div>
+  </aside> {% endcomment %}
+
 </div>
 
 {% endblock body %}

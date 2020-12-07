@@ -2,59 +2,43 @@
 {% block title %} Stock Search Results {% endblock title %}
 {% block body %}
 
-<div class="frame mx-auto" style="width: 85%; justify-content: center;">
-    <div class="mid-frame my-4 mx-5 " style="justify-content: center;">
-        <div class="postcont col-md-9">
-        <H2>Stock Search Result : </H2>
-            {% if allSwingTradePost|length < 1 %}
-            <p> Sorry, No search Reults Found. </p>
-            Your Search query - <b>{{squery}}</b> - did not match any stock on this website. <br>
-            <br>
-            Suggestions : 
-            <ul>
-            <li>Make sure that all words are spelled correctly.</li>
-            <li>Try different keywords.</li>
-            <li>Try more general keywords.</li>
-            <li>Try fewer keywords.</li>
-            </ul>
-    
-            {% endif %}
-    
-            {% for SwingTradePost in allSwingTradePost %}
-            <div 
-                class="row no-gutters border rounded overflow-hidden flex-md-row mb-3 shadow-sm h-md-250     position-relative">
-                <div class="col p-3 d-flex flex-column position-static">
-                    <h5 class="mb-0"> <a class="text-dark" href="/stock/{{SwingTradePost.slug}}" target="_blank"> {{SwingTradePost.stockname}} </a></h5>
-                    <div class="mb-1 text-muted">{{SwingTradePost.timeStamp}}  | 
-                        <strong class="d-inline-block mb-1 text-primary">Sector :{{SwingTradePost.sector}}</strong> <p> {{SwingTradePost.content|truncatechars:150|safe}}  </p>
+<div class="frame d-flex flex-row flex-wrap my-4 mx-auto" style="width:100%; justify-content:center;">
+
+    <div class="container my-4 col-md-9 mx-0" >
+
+        <div class="mid-frame my-4 " style="justify-content: center;">
+            <div class="postcont">
+                <H2>Stock Search Result : </H2>
+                {% if allSwingTradePost|length < 1 %}
+                <p> Sorry, No search Reults Found. </p>
+                Your Search query - <b>{{squery}}</b> - did not match any stock on this website. <br>
+                <br>
+                Suggestions :
+                <ul>
+                    <li>Make sure that all words are spelled correctly.</li>
+                    <li>Try different keywords.</li>
+                    <li>Try more general keywords.</li>
+                    <li>Try fewer keywords.</li>
+                </ul>
+
+                {% endif %}
+
+                {% for SwingTradePost in allSwingTradePost %}
+                <div
+                    class="row no-gutters border rounded overflow-hidden flex-md-row mb-3 shadow-sm h-md-250     position-relative">
+                    <div class="col p-3 d-flex flex-column position-static">
+                        <h4 class="mb-0"> <a class="text-dark" href="/stock/{{SwingTradePost.slug}}" target="_blank">
+                                Stock Name : {{SwingTradePost.stockname}} </a></h4>
+                        <div class="mb-1"> Posted on : {{SwingTradePost.timeStamp}} <br>
+                            <strong class="d-inline-block mb-1 text-dark">Sector : {{SwingTradePost.sector}}</strong>
+                            <p> {{SwingTradePost.content|truncatechars:150|safe}} </p>
+                        </div>
                     </div>
-    
                 </div>
-                {% comment %} <div class="col-auto my-4 d-none d-lg-block"> <img src="https://source.unsplash.com/75x75/?nature,news" class="mr-3" alt="...">
-                </div> {% endcomment %}
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
 
-    <p class="mx-5" > <a href="/stock/market"> <button type="button" class="btn btn-sm btn-outline-primary"> <i class="fa fa-arrow-left"></i> Check Swing Trade</button> </a> </p>
-
-    <div class="p-4 mx-5 ">
-        <h4>Important Links</h4>
-        <ol class="list-unstyled mb-0">
-            <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
-            <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
-            <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
-        </ol>
-    </div>
-    
-    <div class="p-4 mx-5">
-        <h4>Follow Us</h4>
-        <ol class="list-unstyled">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Telegram</a></li>
-        </ol>
     </div>
 
 

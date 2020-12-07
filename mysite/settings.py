@@ -26,6 +26,7 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = ['localhost', '134.122.30.235', 'www.economicinfo.in', 'economicinfo.in']
+# 
 
 
 # Application definition

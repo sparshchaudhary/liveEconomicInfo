@@ -2,14 +2,14 @@ from django.db import models
 
 # Create your models here.
 
-class FinanceNewsPost (models.Model):
+class LatestFinancenewspost (models.Model):
     sno = models.AutoField(primary_key=True)
     title = models.CharField(max_length=150)
     content = models.TextField()
     author = models.CharField(max_length=20)
-    slug = models.CharField(max_length=150)
+    Fslug = models.CharField(max_length=150)
     views = models.IntegerField(default=0)
-    image = models.ImageField(upload_to="Index/images", default="")
+    image = models.ImageField(upload_to="FinanceNews/Postimages", default="")
     created_on = models.DateTimeField(auto_now_add=True)
     timeStamp = models.DateTimeField(blank=True)
 

@@ -2,15 +2,91 @@
 {% block title %} {{trendgpost.title}} {% endblock title %}
 {% block body %}
 
-<div class="container shadow p-3 my-4 mb-4 bg-white my-4 col-md-8">
-        <h2 class="news-post-title"> {{trendgpost.title}} </h2>
-        <p class="news-post-meta mb-1">Posted at : {{trendgpost.timeStamp}} | <strong
-        class="d-inline-block mb-1 text-primary"> Source: {{trendgpost.author}} </strong> |
-        <div class="fb-like" data-href="http://127.0.0.1:8000/news/{{trendgpost}}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
-        <p class="my-2"> {{trendgpost.content|safe}} </p>
-        <hr>
-        <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{trendgpost}}" data-numposts="5" data-width=""></div>
+<div class="main d-flex flex-row flex-wrap my-4 mx-auto" style="width:100%; justify-content:center;">
+
+        <div class="container my-4 col-md-7 mx-0">
+                <h2 class="news-post-title"> {{trendgpost.title}} </h2>
+
+                <p class="news-post-meta mb-1">Posted at : {{trendgpost.timeStamp}} </p>
+                <p> Source: {{trendgpost.author}} <br>
+                        ( <span> Total : {{trendgpost.views}} views </span> ) </p>
+
+                <hr class="bg-dark">
+                <div class="sharethis-inline-share-buttons"></div>
+                <hr class="bg-dark">
+
+                <p class="my-2"> {{trendgpost.content|safe}} </p>
+                <hr>
+
+                <p> <a href="/job/latest"> <button type="button" class="btn btn-sm btn-outline-dark"> <i
+                                                class="fa fa-arrow-left"></i> Check more Government Vacancies </button>
+                        </a> </p>
+
+                <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{trendgpost}}" data-numposts="5"
+                        data-width=""></div>
+        </div>
+
+
+        <aside class="col-md-3 my-4 ml-0">
+
+                <div class=" p-3 bg-light">
+                        <h5>Subscribe for latest Job Updates</h5>
+
+                        <form method="post" , action="/">
+                                {% csrf_token %}
+                                <div class="type p-1 " style="background-color: white;">
+                                        <input type="email" class="form-control" id="email" name="useremail"
+                                                placeholder="Enter Email Address here" aria-describedby="email">
+                                </div>
+                                <button type="submit" class="btn btn-primary my-2 col-md-6 ">Subscribe</button>
+                        </form>
+                </div>
+
+                <hr class="bg-dark">
+
+                <div class="book border rounded p-2 mb-4" style="justify-content: center;">
+
+                        <h5> Exam Books Recommendations </h5>
+                        {% for BookPost in allBookPost %}
+                        <div class="d-flex flex-row flex-wrap my-4 mx-auto ">
+
+                                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0"
+                                        scrolling="no" frameborder="0" src="{{BookPost.BookOneUrl}}"></iframe>
+
+                                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0"
+                                        marginheight="0" scrolling="no" frameborder="0"
+                                        src="{{BookPost.BookTwoUrl}}"></iframe>
+
+                        </div>
+
+                        <div class="d-flex flex-row flex-wrap my-4 ">
+
+                                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0"
+                                        scrolling="no" frameborder="0" src="{{BookPost.BookThreeUrl}}"></iframe>
+
+                                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0"
+                                        marginheight="0" scrolling="no" frameborder="0"
+                                        src="{{BookPost.BookFourUrl}}"></iframe>
+
+                        </div>
+
+                        <div class="d-flex flex-row flex-wrap my-4 ">
+
+                                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0"
+                                        scrolling="no" frameborder="0" src="{{BookPost.BookFiveUrl}}"></iframe>
+
+                                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0"
+                                        marginheight="0" scrolling="no" frameborder="0"
+                                        src="{{BookPost.BookSixUrl}}"></iframe>
+
+                        </div>
+
+                        {% endfor %}
+
+                </div>
+
+        </aside>
+
 </div>
 
 {% endblock body %}
-

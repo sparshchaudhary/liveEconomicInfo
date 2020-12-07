@@ -4,85 +4,141 @@
 
 {% block body %}
 
-<div class="mid-frame d-flex flex-row flex-wrap my-4">
-    <div class="container col-md-9">
+<div class="mid-frame my-4 d-flex flex-row flex-wrap mx-auto" style="width: 100%; justify-content: center;">
+
+    <div class="container col-md-7 mx-0">
         <div class="search-section d-flex flex-wrap flex-row mb-2 border rounded p-2">
-            <h3 class="col-md-7">Latest Government Vacancies</h3>
-            <form method="get" action="/job/gsearch" class="form-inline my-2 my-lg-0 col-md-4">
-                <input class="form-control mr-sm-2 col-md-8" type="search" placeholder="Search Category Name" name="gquery" id="gquery" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="width: 30%;" >Search</button>
+            <h4 class="col-md-7"> Latest Government post </h4>
+            <form method="get" action="/job/gsearch" class="form-inline my-2 my-lg-0 col-md-5">
+                <input class="form-control mr-sm-2" type="search" placeholder="Category Name" name="gquery" id="gquery"
+                    aria-label="Search" style="width: 60%;">
+                <button class="btn btn-outline-primary my-2 my-sm-0 ml-1" type="submit"
+                    style="width: 30%;">Search</button>
             </form>
         </div>
 
-        {% for GovJobPost in allGovJobPost %}
+        {% for LatestGovJobPost in allLatestGovJobPost %}
         <div
             class="row no-gutters border rounded overflow-hidden flex-md-row mb-3 shadow-sm h-md-250     position-relative">
+
+            <img src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{LatestGovJobPost.image}}"
+                class="mr-1 ml-1 my-2 img-fluid" alt="image" style="height:100px; width:100px">
+
             <div class="col p-3 d-flex flex-column position-static">
-                <h3 class="mb-0"> <a class="text-dark" href="/job/{{GovJobPost.slug}}" target="_blank"> {{GovJobPost.title}} </a> </h3>
-                <div class="mb-1 text-muted"> Posted on : {{GovJobPost.timeStamp}} || 
-                    <strong class="d-inline-block mb-1 text-primary"> Source : {{GovJobPost.author}} </strong> || <strong class="d-inline-block mb-1 text-dark"> Category : {{GovJobPost.category}} || Location : {{GovJobPost.location}} </strong>
+                <h5 class="mb-0"> <a class="text-dark" href="/job/recent/{{LatestGovJobPost.Gslug}}" target="_blank">
+                        {{LatestGovJobPost.title}} </a> </h5>
+                <div class="mb-1 text-muted"> <small> Posted on : {{LatestGovJobPost.timeStamp}} </small> <br> <span class="d-inline-block text-dark"> Category : {{LatestGovJobPost.category}} </span> <br>
+                    <span class="d-inline-block mb-1 text-dark"> Source : {{LatestGovJobPost.author}} </span> <br>
+                    <i class="fa fa-map-marker"></i> : {{LatestGovJobPost.location}} 
                 </div>
-                <p class="mb-0"> {{ GovJobPost.content| truncatechars:50 | safe}}</p>
-                <strong> <a class="my-0" href="/job/{{GovJobPost.slug}}" target="_blank" style="color: red;" >Get More Datails & Apply Now</a></strong>
-            </div>
-            <div class="col-auto my-4 mr-2 d-none d-lg-block"> <img src="https://economicinfo-storage-space.nyc3.digitaloceanspaces.com/economicinfo-static/{{GovJobPost.image}}"
-                class="mr-3" alt="imagetest">
             </div>
         </div>
         {% endfor %}
-        
+
     </div>
 
-    <aside class="col-md-3 blog-sidebar">
+    <aside class="col-md-3 ml-0">
 
-        <div class="book border rounded p-2 mb-4">
+        {% comment %} <div class="p-3" style=" background-color: #2664C8;">
+            <!-- style="background-color: #b2cef3;" -->
 
-            <h4>    Exam Books </h4>
+            <h5 style="color: white;" >Download Exam Pdf</h5>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                
+                <div class="carousel-inner ">
+                  <div class="carousel-item active" style="width: 100%; justify-content: center;" >
+                      <div class="col-md-10 mx-auto" >
+                          <div class="card my-2 bg-white" style="width: auto;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the .</p>
+                              <a href="#" class="btn btn-primary">Download</a>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="carousel-item " style="width: 100%; justify-content: center;">
+                    <div class="col-md-10 mx-auto" >
+                        <div class="card my-2 bg-white" style="width: auto;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the .</p>
+                              <a href="#" class="btn btn-primary">Download</a>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item " style="width: 100%; justify-content: center;">
+                    <div class="col-md-10 mx-auto" >
+                        <div class="card my-2 bg-white" style="width: auto;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the .</p>
+                              <a href="#" class="btn btn-primary">Download</a>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>        
+        </div> {% endcomment %}
+
+        {% comment %} <hr class="bg-dark"> {% endcomment %}
+
+        <div class="p-3 bg-light">
+            <h5>Subscribe for latest Job Updates</h5>
+
+            <form method="post" , action="/job/latest">
+                {% csrf_token %}
+                <div class="type p-1 " style="background-color: white;">
+                    <input type="email" class="form-control" id="useremail" name="useremail"
+                        placeholder="Enter Email Address here" aria-describedby="email">
+                </div>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your information with
+                    anyone.</small>
+                <button type="submit" class="btn btn-primary my-2 col-md-6 ">Subscribe</button>
+            </form>
+        </div>
+
+        <hr class="bg-dark">
+
+        <div class="book p-2 mb-4 my-4" style="justify-content: center;">
+
+            <h5 class="ml-2"> Exam Books </h5>
+            <hr>
             {% for BookPost in allBookPost %}
-            <div class="d-flex flex-row flex-wrap my-4 " >
+            <div class="d-flex flex-row flex-wrap my-0 " style="justify-content: center;">
 
-                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookOneUrl}}"></iframe>
+                <iframe class="ml-2" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no"
+                    frameborder="0" src="{{BookPost.BookOneUrl}}"></iframe>
 
-                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookTwoUrl}}"></iframe>
-
-            </div>
-
-            <div class="d-flex flex-row flex-wrap my-4 " >
-
-                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookThreeUrl}}"></iframe>
-
-                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookFourUrl}}"></iframe>
+                <iframe class="ml-4" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no"
+                    frameborder="0" src="{{BookPost.BookTwoUrl}}"></iframe>
 
             </div>
 
-            <div class="d-flex flex-row flex-wrap my-4 " >
+            <div class="d-flex flex-row flex-wrap my-4 " style="justify-content: center;">
+                <iframe class="ml-2" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no"
+                    frameborder="0" src="{{BookPost.BookThreeUrl}}"></iframe>
 
-                <iframe class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookFiveUrl}}"></iframe>
-
-                <iframe class="ml-3" class="ml-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{BookPost.BookSixUrl}}"></iframe>
-
+                <iframe class="ml-4" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no"
+                    frameborder="0" src="{{BookPost.BookFourUrl}}"></iframe>
             </div>
 
             {% endfor %}
-        
-        </div>
 
-        <div class="p-4">
-            <h4 class="font-italic">Important Links</h4>
-            <ol class="list-unstyled mb-0">
-                <li><a href="/news/finance" target="_blank">Latest Finance News</a></li>
-                <li><a href="/stock/market" target="_blank">Investment in Stock</a></li>
-                <li><a href="/job/latest" target="_blank">Latest Government Jobs</a></li>
-            </ol>
-        </div>
-
-        <div class="p-4">
-            <h4 class="font-italic">Follow Us</h4>
-            <ol class="list-unstyled">
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Telegram</a></li>
-            </ol>
         </div>
 
     </aside>

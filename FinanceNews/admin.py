@@ -1,5 +1,5 @@
 from django.contrib import admin
-from FinanceNews.models import FinanceNewsPost, SideNewsPics, HeaderNewsPics
+from FinanceNews.models import SideNewsPics, HeaderNewsPics, LatestFinancenewspost
 
 # Register your models here.
 # admin.site.register(FinanceNewsPost)
@@ -7,8 +7,8 @@ from FinanceNews.models import FinanceNewsPost, SideNewsPics, HeaderNewsPics
 admin.site.register(SideNewsPics)
 admin.site.register(HeaderNewsPics)
 
-@admin.register(FinanceNewsPost)
-class FinanceNewsPostAdmin(admin.ModelAdmin):
+@admin.register(LatestFinancenewspost)
+class LatestFinancenewspostAdmin(admin.ModelAdmin):
     class Media:
         js = ('tinyinject.js',)
 

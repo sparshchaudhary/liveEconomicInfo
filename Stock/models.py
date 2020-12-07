@@ -67,6 +67,30 @@ class LongTermBet (models.Model):
     def __str__(self):
         return self.stockname + ' ---- Long Term Trade -- POSTED ON  ----  ' + self.date
 
+class StockMarketPageContact (models.Model):
+    sno = models.AutoField(primary_key=True)
+    useremail = models.CharField(max_length=50)
+
+    def __str__(self):
+        return 'Message from  --- '+ self.useremail
 
 
+class StockMarketOpinionPost (models.Model):
+    sno = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=150)
+    content = models.TextField()
+    author = models.CharField(max_length=50)
+    stockopinionslug = models.CharField(max_length=150)
+    views = models.IntegerField(default=0)
+    image = models.ImageField(upload_to="StockMarket/Opinion", default="")
+    sector = models.CharField(max_length=150)
+    created_on = models.DateTimeField(auto_now_add=True)
+    timeStamp = models.DateTimeField(blank=True)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return self.title + ' --- STOCK MARKET OPINION POSTED BY  ---  ' + self.author
+   
 

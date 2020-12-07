@@ -2,18 +2,23 @@
 {% block title %} {{gtrendpost.title}} {% endblock title %}
 {% block body %}
 
-GlobalTNEWS
+<div class="mid-frame d-flex flex-row flex-wrap my-4 mx-auto" style="width: 100%; justify-content: center;">
 
-<div class="container my-4 col-md-8">
-        <h2 class="news-post-title"> {{gtrendpost.title}} </h2>
-        <p class="news-post-meta mb-1">Posted at : {{gtrendpost.timeStamp}} | <strong
-                class="d-inline-block mb-1 text-primary"> Source: {{gtrendpost.author}} </strong> |
-                <div class="fb-like" data-href="http://127.0.0.1:8000/news/{{gtrendpost}}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
-        <p class="my-2"> {{gtrendpost.content|safe}} </p>
-        <hr>
-        <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{gtrendpost}}" data-numposts="5" data-width=""></div>
-    </div>
+        <div class="container col-md-8 my-4 mx-0">
+                <h2 class="news-post-title"> {{gtrendpost.title}} </h2>
+                <p class="news-post-meta mb-1">Posted at : {{gtrendpost.timeStamp}} <br> <strong
+                                class="d-inline-block mb-1 text-dark"> Source: {{gtrendpost.author}} </strong> 
+                <hr class="bg-dark">
+                <div class="sharethis-inline-share-buttons"></div>
+
+                <hr class="bg-dark">
+                <p class="my-2"> {{gtrendpost.content|safe}} </p>
+                <hr>
+                <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{gtrendpost}}" data-numposts="5"
+                        data-width=""></div>
+        </div>
+
+</div>
+
 
 {% endblock body %}
-
-

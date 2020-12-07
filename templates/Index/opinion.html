@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} {{indexopinionpost.title}} {% endblock title %}
+{% block body %}
+
+<div class="mid-frame d-flex flex-row flex-wrap my-4 mx-auto" style="width: 100%; justify-content: center;">
+
+        <div class="container col-md-8 my-4 mx-0">
+                <h2 class="news-post-title"> {{indexopinionpost.title}} </h2>
+                <p class="news-post-meta mb-1">Posted at : {{indexopinionpost.timeStamp}} <br> <strong
+                                class="d-inline-block mb-1 text-dark"> Source: {{indexopinionpost.author}} </strong> 
+                <hr class="bg-dark">
+                <div class="sharethis-inline-share-buttons"></div>
+
+                <hr class="bg-dark">
+                <p class="my-2"> {{indexopinionpost.content|safe}} </p>
+                <hr>
+                <div class="fb-comments mx-auto" data-href="http://127.0.0.1:8000/news/{{indexopinionpost}}" data-numposts="5"
+                        data-width=""></div>
+        </div>
+
+        
+</div>
+
+
+{% endblock body %}

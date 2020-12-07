@@ -5,6 +5,6 @@ from .import views
 urlpatterns = [
     path('latest', views.gjob, name='gjob'),
     path('gsearch', views.gsearch, name='gsearch'),
-    path('<str:slug>', views.GjobPost, name='GjobPost')
+    path('recent/<str:Gslug>', views.LatestGjobPost, name='LatestGjobPost'),
 ]
 
